@@ -19,6 +19,8 @@ db.sequelize.sync();
 require("./routes/agendamento.routes")(app);
 require("./routes/servico.routes")(app);
 require("./routes/usuario.routes")(app);
+require("./routes/atendimento.routes")(app);
+require("./routes/produtos.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

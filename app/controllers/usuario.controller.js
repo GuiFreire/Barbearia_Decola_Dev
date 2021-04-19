@@ -6,10 +6,10 @@ const create = async (req, res) => {
     if (!nome || !cpf || !email || !telefone || !senha || !tipo) {
         res.status(400).send({
             message: "Missing required value"
-        })
+        });
 
         return;
-    }
+    };
 
     //Valida se o usuário já existe
     const usuario = await usuarioRepository.findUserByEmailOrCpfOrPhone(email, cpf, telefone);
@@ -19,6 +19,7 @@ const create = async (req, res) => {
         res.status(400).send({
             message: "Usuário já cadastrado"
         })
+        return;
     }
 
     try {

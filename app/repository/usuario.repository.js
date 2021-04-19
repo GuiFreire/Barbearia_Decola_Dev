@@ -7,7 +7,7 @@ const create = async (usuario) => {
     const data = await Usuario.create(usuario);
 
     return data;
-}
+};
 
 const findClientes = async () => {
     const data = await Usuario.findAll({
