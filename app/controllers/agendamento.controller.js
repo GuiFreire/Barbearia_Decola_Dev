@@ -32,6 +32,15 @@ const create = async (req, res) => {
             return;
         }
 
+        //Valida se o horário ja foi agendado para o funcionário
+        const horario = await agendamentoRepository.findAgendamentoByDataAndFuncionario(data, id_funcionario);
+
+        //Valida se o objeto não está vazio
+        if (horario) {
+            res.status(400).send({ message: "Horario já agendado para este funcionário"})
+        };
+
+
         // busca o serviço por id
         const servico = await servicoRepository.findServicoById(id_servico);
 
