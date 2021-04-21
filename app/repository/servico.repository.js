@@ -20,8 +20,17 @@ const findServicoById = async (id) => {
     return data;
 };
 
+const updateById = async (servico, id) => {
+    const data = await Servico.update(servico, {
+        where: {id : id}
+    });
+
+    return data;
+}
+
 module.exports = {
     create,
     findAll,
-    findServicoById
+    findServicoById,
+    updateById
 }

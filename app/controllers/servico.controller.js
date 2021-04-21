@@ -1,7 +1,9 @@
 const servicoRepository = require('../repository/servico.repository');
 
 const create = async (req, res) => {
-    if (!req.body.nome) {
+    const {nome , descricao, valor} = req.body
+
+    if (!nome) {
         res.status(400).send({
             message: "Nome não pode ser vazio!"
         })
@@ -10,9 +12,9 @@ const create = async (req, res) => {
     }
 
     const servico = {
-        nome: req.body.nome,
-        descricao: req.body.descricao,
-        valor: req.body.valor,
+        nome,
+        descricao,
+        valor,
     };
     
     const data = await servicoRepository.create(servico);
@@ -26,7 +28,43 @@ const findAll = async (req, res) => {
     res.send(data);
 };
 
+const update = async (req, res) => {
+    //Pegando o ID da rota
+    const id = req.params.id;
+
+    //Verifica se serciço existe
+    const servico = await servicoRepository.findServicoById(id);
+
+    //Se o serviço não existir, não atualiza
+    if (!servico) {
+        res.status(400).send({
+            message: "Serviço não existe"
+        })
+
+        return
+    };
+
+    try {
+        //Atualiza o que vier no corpo no ID que estiver no parametro da rota
+        const servicoAtualizado = await servicoRepository.updateById(req.body, id);
+
+        //Verificando se o serviço foi atualizado
+        if (servicoAtualizado == 1) {
+            res.send({
+                message: "Serviço atualizado com sucesso"
+            });
+        } else {
+            res.send({
+                message: "Falha ao atualizar serviço"
+            })
+        };
+    } catch(error){
+        res.status(500).send(error)
+    };
+};
+
 module.exports = {
     create,
-    findAll
+    findAll,
+    update
 }

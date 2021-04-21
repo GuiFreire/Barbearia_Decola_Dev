@@ -7,6 +7,8 @@ module.exports = app => {
     router.post("/", servico.create);
     //Listar serviços
     router.get('/', servico.findAll)
+    //Atualizar serviço por ID
+    router.put('/:id', servico.update)
 
     app.use('/api/servico', router)
 }
