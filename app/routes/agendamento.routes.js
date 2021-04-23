@@ -9,5 +9,8 @@ module.exports = app => {
     // Listar Todos Agendamentos
     router.get("/", agendamentos.findAll);
 
+    //Deletar agendamento
+    router.delete("/:id", agendamentos.deleteAgendamento);
+
     app.use('/api/agendamento', router)
 }

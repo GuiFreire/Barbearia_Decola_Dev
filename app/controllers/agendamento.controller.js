@@ -1,6 +1,7 @@
 const agendamentoRepository = require("../repository/agendamento.repository");
 const usuarioRepository = require("../repository/usuario.repository");
 const servicoRepository = require("../repository/servico.repository");
+const { default: corde } = require("corde");
 
 const findAll = async (req, res) => {
     const agendamentos = await agendamentoRepository.findAll();
@@ -66,9 +67,40 @@ const create = async (req, res) => {
         return;
     }
     
-}
+};
+
+const deleteAgendamento = async (req, res) => {
+    const id = req.params.id
+
+    //Validar se o agendamento existe
+    const agendamento = await agendamentoRepository.findAgendamentoById(id);
+
+    //Se o agendamento não existir, erro
+    if (!agendamento) {
+        res.status(400).send({
+            message: "Agendamento não existe"
+        });
+    };
+
+    try {
+        const data = await agendamentoRepository.deleteAgendamento(id)
+
+        if (data == 1) {
+            res.send({
+                message: "Agendamento deletado com sucesso"
+            });
+        } else {
+            res.send({
+                message: "Erro ao deletar agendamento"
+            })
+        }
+    } catch(error) {
+        res.send(error)
+    };
+};
 
 module.exports = {
     create,
-    findAll
+    findAll,
+    deleteAgendamento
 }

@@ -17,7 +17,7 @@ const findAll = async () => {
                 attributes: ['id', 'nome', 'telefone']
             }
         ],
-        attributes: ['data']
+        attributes: ['id', 'data']
     });
 
     return data;
@@ -35,10 +35,28 @@ const findAgendamentoByDataAndFuncionario = async (data, id_funcionario) => {
     });
 
     return datas;
-}
+};
+
+const deleteAgendamento = async (id) => {
+    const data = await Agendamento.destroy({
+        where: {id : id}
+    });
+
+    return data;
+};
+
+const findAgendamentoById = async (id) => {
+    const data = await Agendamento.findOne({
+        where: {id : id}
+    });
+
+    return data;
+};
 
 module.exports = {
     create,
     findAll,
-    findAgendamentoByDataAndFuncionario
+    findAgendamentoByDataAndFuncionario,
+    deleteAgendamento,
+    findAgendamentoById
 }
