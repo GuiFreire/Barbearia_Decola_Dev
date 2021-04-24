@@ -37,8 +37,73 @@ const findAgendamentoByDataAndFuncionario = async (data, id_funcionario) => {
     return datas;
 }
 
+const findAgendamentoByData = async ( data ) => {
+    const datas = await Agendamento.findOne({
+        where: { data }
+    });
+
+    return datas;
+}
+
+const findByFuncionarioName = async (nome) => {
+    const data = await Agendamento.findAll({
+        include: [
+            {
+                model: Usuario,
+                as: 'funcionarioAgendamento',
+                where: {
+                          nome : nome ,
+                          tipo :2
+                },
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome']
+            }
+        ],
+            attributes: ['data']
+    });
+    return data;
+};
+
+const findByServico = async (nome) => {
+    const data = await Agendamento.findAll({
+        include: [
+            {
+                model: Usuario,
+                as: 'funcionarioAgendamento',
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                where: {
+                    nome : nome 
+                },
+                attributes: ['id', 'nome']
+            }
+        ],
+            attributes: ['data']
+    });
+    return data;
+};
 module.exports = {
     create,
     findAll,
-    findAgendamentoByDataAndFuncionario
+    findAgendamentoByDataAndFuncionario,
+    findAgendamentoByData,
+    findByFuncionarioName,
+    findByServico
 }

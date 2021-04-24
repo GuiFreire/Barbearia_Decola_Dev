@@ -110,10 +110,34 @@ const deleteProduto = async (req, res) => {
     };
 };
 
+const findProdutoByName = async (req, res) => {
+    const nome = req.params.nome;
+
+    //valida se produto existe
+    const produto = await produtoRepository.findProdutoByName(nome);
+
+   
+    if (!produto) {
+        res.status(400).send({
+            message: "O produto em questão não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const produtoRetorno = await produtoRepository.findProdutoByName(nome)
+        res.send(produtoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
 module.exports = {
     create,
     findAll,
     updateOne,
     findProdutoById,
+    findProdutoByName,
     deleteProduto
 }

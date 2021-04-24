@@ -2,11 +2,17 @@ const agendamentoRepository = require("../repository/agendamento.repository");
 const usuarioRepository = require("../repository/usuario.repository");
 const servicoRepository = require("../repository/servico.repository");
 
+
 const findAll = async (req, res) => {
     const agendamentos = await agendamentoRepository.findAll();
 
     res.send(agendamentos);
+
+
 }
+
+
+
 
 const create = async (req, res) => {
     const { data, id_cliente, id_funcionario, id_servico } = req.body;
@@ -68,7 +74,81 @@ const create = async (req, res) => {
     
 }
 
+const findAgendamentoByData = async (req, res) => {
+    const data = req.params.data;
+
+    //valida se agendamento existe
+    const agendamento = await agendamentoRepository.findAgendamentoByData(data);
+
+    
+    if (!agendamento) {
+        res.status(400).send({
+            message: "Agendamento não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const agendamentoRetorno = await agendamentoRepository.findAgendamentoByData(data)
+        res.send(agendamentoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
+const findByFuncionarioName = async (req, res) => {
+    const nome = req.params.nome;
+
+    //valida se o agendamento existe
+    const agendamento = await agendamentoRepository.findByFuncionarioName(nome);
+
+   
+    if (!agendamento) {
+        res.status(400).send({
+            message: "O agendamento não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const agendamentoRetorno = await agendamentoRepository.findByFuncionarioName(nome)
+        res.send(agendamentoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
+const findByServico = async (req, res) => {
+    const nome = req.params.nome;
+
+    //valida se o agendamento existe
+    const agendamento = await agendamentoRepository.findByServico(nome);
+
+   
+    if (!agendamento) {
+        res.status(400).send({
+            message: "O agendamento não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const agendamentoRetorno = await agendamentoRepository.findByServico(nome)
+        res.send(agendamentoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
+
 module.exports = {
     create,
-    findAll
+    findAll,
+    findAgendamentoByData,
+    findByFuncionarioName,
+    findByServico
+    
 }

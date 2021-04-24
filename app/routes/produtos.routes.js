@@ -15,6 +15,9 @@ module.exports = app => {
     //Buscar produto por id
     router.get("/:id", produto.findProdutoById);
 
+    //Buscar produto por nome
+    router.get("/nome/:nome", produto.findProdutoByName);
+
     //Deletar produto por id
     router.delete("/:id", produto.deleteProduto);
 
