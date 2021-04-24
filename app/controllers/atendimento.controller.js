@@ -17,7 +17,8 @@ const create = async (req, res) => {
             email,
             celular,
             assunto,
-            mensagem
+            mensagem,
+            status: req.body.status ? req.body.status : false
         });
         
         res.status(201).send(atendimentoCriado);

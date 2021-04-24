@@ -2,6 +2,7 @@ const db = require('../models');
 
 const Agendamento = db.tb_agendamento;
 const Usuario = db.tb_usuarios;
+const Servico = db.tb_servicos;
 
 const findAll = async () => {
     const data = await Agendamento.findAll({
@@ -15,6 +16,11 @@ const findAll = async () => {
                 model: Usuario,
                 as: 'clienteAgendamento',
                 attributes: ['id', 'nome', 'telefone']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'descricao']
             }
         ],
         attributes: ['id', 'data']
