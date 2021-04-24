@@ -63,8 +63,62 @@ const update = async (req, res) => {
     };
 };
 
+const findServicoById = async (req, res) => {
+    const id = req.params.id;
+
+    //valida se produto existe
+    const servico = await servicoRepository.findServicoById(id);
+
+    if (!servico) {
+        res.status(400).send({
+            message: "O servico em questão não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const servicoRetorno = await servicoRepository.findServicoById(id)
+        res.send(servicoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
+const deleteServico = async (req, res) => {
+    const id = req.params.id;
+
+    const servico = await servicoRepository.findServicoById(id)
+
+    if(!servico) {
+        res.status(400).send({
+            message: 'Serviço não existe'
+        })
+
+        return
+    }
+
+    try {
+        const servicoDeletado = await servicoRepository.deleteServico(id);
+
+        if(servicoDeletado) {
+            res.send({
+                message: 'Serviço deletado com sucesso'
+            });
+        } else {
+            res.send({
+                message: 'Falha ao deletar serviço'
+            })
+        }
+    } catch(error) {
+        res.status(500).send(error)
+    }
+}
+
 module.exports = {
     create,
     findAll,
-    update
+    update,
+    findServicoById,
+    deleteServico
 }

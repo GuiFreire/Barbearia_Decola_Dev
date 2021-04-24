@@ -10,5 +10,7 @@ module.exports = app => {
     //Atualizar serviço por ID
     router.put('/:id', servico.update)
 
+    router.delete('/:id', servico.deleteServico)
+
     app.use('/api/servico', router)
 }
