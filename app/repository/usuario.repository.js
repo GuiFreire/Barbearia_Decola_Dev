@@ -41,10 +41,34 @@ const findUserByEmailOrCpfOrPhone = async (email, cpf, telefone) => {
     return data;
 };
 
+const findClienteByNomeAndTipo = async(nome,tipo) =>{
+    const data = await usuario.findOne({
+        where: { nome: nome,
+        tipo: 1}
+    })
+    return data
+}
+
+const findClienteByCpf =  async (cpf) => {
+    const data = await usuario.findOne({
+        where: {cpf:cpf}
+    })
+    return data
+}
+
+const findFuncionarioByNomeAndTipo = async(nome,tipo) =>{
+    const data = await usuario.findOne({
+        where: { nome: nome ,tipo:2}
+    })
+    return data
+}
 module.exports = {
     create,
     findClientes,
     findFuncionarios,
     findUserByIdAndType,
-    findUserByEmailOrCpfOrPhone
+    findUserByEmailOrCpfOrPhone,
+    findClienteByNomeAndTipo,
+    findClienteByCpf,
+    findFuncionarioByNomeAndTipo,
 }
