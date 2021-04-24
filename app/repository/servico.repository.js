@@ -15,10 +15,18 @@ const findAll = async () => {
 };
 
 const findServicoById = async (id) => {
-    const data = await Servico.findOne({where: { id }});
+    const data = await Servico.findOne({ where: { id }});
 
     return data;
 };
+
+const findServicoByName = async (nome) => {
+    const data = await Servico.findOne({
+            where: { nome : nome }
+        });
+
+    return data;
+}
 
 const updateById = async (servico, id) => {
     const data = await Servico.update(servico, {
@@ -41,5 +49,6 @@ module.exports = {
     findAll,
     findServicoById,
     updateById,
-    deleteServico
+    deleteServico,
+    findServicoByName
 }

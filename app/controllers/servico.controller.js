@@ -63,6 +63,28 @@ const update = async (req, res) => {
     };
 };
 
+const findServicoByName = async (req, res) => {
+    const nome = req.params.nome;
+
+    //valida se produto existe
+    const servico = await servicoRepository.findServicoByName(nome);
+
+    if (!servico) {
+        res.status(400).send({
+            message: "O servico em questão não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const servicoRetorno = await servicoRepository.findServicoByName(nome)
+        res.send(servicoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
 const findServicoById = async (req, res) => {
     const id = req.params.id;
 
@@ -120,5 +142,6 @@ module.exports = {
     findAll,
     update,
     findServicoById,
-    deleteServico
+    deleteServico,
+    findServicoByName
 }
