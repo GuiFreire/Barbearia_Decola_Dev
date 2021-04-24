@@ -68,7 +68,54 @@ const create = async (req, res) => {
     
 }
 
+const updateById = async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const agendamentoAtualizado = await agendamentoRepository.updateById(req.body, id);
+
+        if (agendamentoAtualizado == 1) {
+            res.send({
+                message: "Agendamento atualizado com sucesso"
+            })
+        } else {
+            res.send({
+                message: "Não foi possível atualizar o agendamento"
+            });
+        };
+    } catch(error) {
+        res.status(500).send(error)
+    } 
+};
+
+const findByName = async (req, res) => {
+    const nome = req.params.nome;
+
+    const agendamento = await agendamentoRepository.findByName(nome);
+
+    if (!agendamento) {
+        res.status(400).send({
+            message: "Agendamento inexistente"
+        });
+
+        return;
+    };
+
+    try {
+        const agendamentoRetorno = await agendamentoRepository.findByName(nome)
+            res.send(agendamentoRetorno)
+            
+    } catch(error) {
+        res.status(500).send(error)
+    };
+}
+
+
+
 module.exports = {
     create,
-    findAll
+    findAll,
+    updateById,
+    findByName
+
 }

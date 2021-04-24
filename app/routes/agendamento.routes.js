@@ -9,5 +9,11 @@ module.exports = app => {
     // Listar Todos Agendamentos
     router.get("/", agendamentos.findAll);
 
+     //Atualizar agendamento por id
+    router.put("/:id", agendamentos.updateById);
+
+    // Listar Agendamentos por nome
+    router.get("/clientes/:nome", agendamentos.findByName);
+
     app.use('/api/agendamento', router)
 }

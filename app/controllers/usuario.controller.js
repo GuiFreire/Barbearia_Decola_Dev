@@ -51,8 +51,59 @@ const findFuncionarios = async (req, res) => {
     res.send(usuarios)
 }
 
+const findFuncByPhone = async (req, res) => {
+    const telefone = req.params.telefone;
+
+    const usuarios = await usuarioRepository.findFuncByPhone(telefone);
+
+    if (!usuarios) {
+        res.status(400).send({
+            message: "Telefone de funcionario inexistente"
+        });
+
+        return;
+    };
+
+    try {
+        const usuarioRetorno = await usuarioRepository.findFuncByPhone(telefone)
+        res.send(usuarioRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+}
+
+
+const deleteUsuario = async (req, res) => {
+    const id = req.params.id;
+
+    //valida se produto existe
+    const usuario = await usuarioRepository.findUsuarioById(id);
+
+    //Se não existir, não deixa deletar
+    if (!usuario) {
+        res.status(400).send({
+            message: "O usuario em questão não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const usuarioDeletado = await usuarioRepository.deleteUsuario(id)
+        res.send({
+            message: "Usuario deletado com sucesso"
+        })
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
+
+
 module.exports = {
     create,
     findClientes,
-    findFuncionarios
+    findFuncionarios,
+    findFuncByPhone,
+    deleteUsuario
 }

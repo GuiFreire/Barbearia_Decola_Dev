@@ -12,6 +12,12 @@ module.exports = app => {
     //Listar Funcionarios
     router.get("/funcionarios", usuario.findFuncionarios);
 
+     //Listar Funcionarios por telefone
+    router.get("/funcionariostelefone/:telefone", usuario.findFuncByPhone);
+
+    //Deletar usuario por id
+    router.delete("/:id", usuario.deleteUsuario);
+
 
     app.use('/api/usuario', router)
 }
