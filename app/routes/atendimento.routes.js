@@ -9,7 +9,7 @@ module.exports = app => {
     //Listar todos os atendimentos
     router.get("/", atendimento.findAll);
 
-
+    router.get('/:email', atendimento.findAtendimentoByEmail);
 
     app.use('/api/atendimento', router)
 }

@@ -32,8 +32,31 @@ const findAll = async (req, res) => {
     res.send(atendimentos)
 };
 
+const findAtendimentoByEmail = async (req, res) => {
+    const email = req.params.email;
+
+    //valida se produto existe
+    const atendimento = await atendimentoRepository.findAtendimentoByEmail(email);
+
+    if (!atendimento) {
+        res.status(400).send({
+            message: "O atendimento em questão não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const atendimentoRetorno = await atendimentoRepository.findAtendimentoByEmail(email)
+        res.send(atendimentoRetorno)
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
 
 module.exports = {
     create,
-    findAll
+    findAll,
+    findAtendimentoByEmail
 }
