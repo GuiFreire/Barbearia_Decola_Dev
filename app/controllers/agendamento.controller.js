@@ -70,6 +70,16 @@ const create = async (req, res) => {
 
 const updateById = async (req, res) => {
     const id = req.params.id;
+    
+    const agendamento = await agendamentoRepository.findById(id);
+
+    if (!agendamento) {
+        res.status(400).send({
+            message: "Agendamento não existe"
+        });
+
+        return;
+    }
 
     try {
         const agendamentoAtualizado = await agendamentoRepository.updateById(req.body, id);
@@ -84,16 +94,15 @@ const updateById = async (req, res) => {
             });
         };
     } catch(error) {
-        res.status(500).send(error)
+        res.status(500).send(error);
     } 
 };
 
 const findByName = async (req, res) => {
     const nome = req.params.nome;
 
-    const agendamento = await agendamentoRepository.findByName(nome);
-
     try {
+        const agendamento = await agendamentoRepository.findByName(nome);
 
         if (agendamento.length == 0) {
             res.status(400).send({
@@ -103,14 +112,12 @@ const findByName = async (req, res) => {
             return;
         };
 
-   
-        const agendamentoRetorno = await agendamentoRepository.findByName(nome)
-        res.send(agendamentoRetorno)
+        res.send(agendamento);
             
     } catch(error) {
-        res.status(500).send(error)
+        res.status(500).send(error);
     };
-}
+};
 
 
 

@@ -52,11 +52,38 @@ const findByName = async (nome) => {
         include: [
             {
                 model: Usuario,
+                as: 'funcionarioAgendamento',
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Usuario,
                 as: 'clienteAgendamento',
                 where: {
                           nome : nome ,
                           tipo :1
                 },
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'valor']
+            }
+        ],
+            attributes: ['id', 'data']
+            
+    });
+
+    return data;
+};
+
+const findById = async (id) => {
+    const data = await Agendamento.findOne({
+        where: {id: id},
+        include: [
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
                 attributes: ['id', 'nome']
             },
             {
@@ -67,21 +94,20 @@ const findByName = async (nome) => {
             {
                 model: Servico,
                 as: 'servicoAgendamento',
-                attributes: ['id', 'nome']
+                attributes: ['id', 'nome', 'valor']
             }
         ],
-            attributes: ['data']
-            
+            attributes: ['id', 'data']
     });
 
     return data;
-};
-
+}
 
 module.exports = {
     create,
     findAll,
     findAgendamentoByDataAndFuncionario,
     updateById,
-    findByName
+    findByName,
+    findById
 }

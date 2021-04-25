@@ -1,4 +1,5 @@
 const usuarioRepository = require("../repository/usuario.repository");
+const agendamentoRepository = require("../repository/agendamento.repository");
 
 const create = async (req, res) => {
     const { nome, cpf, email, telefone, senha, tipo, url } = req.body;
@@ -54,21 +55,20 @@ const findFuncionarios = async (req, res) => {
 const findFuncByPhone = async (req, res) => {
     const telefone = req.params.telefone;
 
-    const usuarios = await usuarioRepository.findFuncByPhone(telefone);
-
-    if (!usuarios) {
-        res.status(400).send({
-            message: "Telefone de funcionario inexistente"
-        });
-
-        return;
-    };
-
     try {
-        const usuarioRetorno = await usuarioRepository.findFuncByPhone(telefone)
-        res.send(usuarioRetorno)
+        const usuario = await usuarioRepository.findFuncByPhone(telefone);
+
+        if (!usuario) {
+            res.status(400).send({
+                message: "Telefone de funcionario inexistente"
+            });
+
+            return;
+        };
+
+        res.send(usuario);
     } catch(error) {
-        res.status(500).send(error)
+        res.status(500).send(error);
     };
 }
 
@@ -76,7 +76,7 @@ const findFuncByPhone = async (req, res) => {
 const deleteUsuario = async (req, res) => {
     const id = req.params.id;
 
-    //valida se produto existe
+    //valida se usuário existe
     const usuario = await usuarioRepository.findUsuarioById(id);
 
     //Se não existir, não deixa deletar
@@ -90,9 +90,15 @@ const deleteUsuario = async (req, res) => {
 
     try {
         const usuarioDeletado = await usuarioRepository.deleteUsuario(id)
-        res.send({
-            message: "Usuario deletado com sucesso"
-        })
+        if (usuarioDeletado == 1) {
+            res.send({
+                message: "Usuario deletado com sucesso"
+            });
+        } else {
+            res.send({
+                message: "Não foi possível deletar o usuário"
+            });
+        };
     } catch(error) {
         res.status(500).send(error)
     };
