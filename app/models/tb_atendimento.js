@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     celular: DataTypes.STRING,
     assunto: DataTypes.STRING,
+    status: DataTypes.BOOLEAN,
     mensagem: DataTypes.STRING
   }, {
     sequelize,

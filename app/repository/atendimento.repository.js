@@ -29,10 +29,10 @@ const findAtendimentoByEmail = async (email) => {
     return data;
 };
 
-const atualizarStatusDoAtendimento = async (status, id) => {
-    const data = await Atendimento.update(status, {
-        where: { id : id }
-    });
+const atualizarStatusDoAtendimento = async (atendimentoStatus, status) => {
+    atendimentoStatus.status = status;
+
+    const data = await atendimentoStatus.save();
 
     return data;
 }

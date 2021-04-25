@@ -57,8 +57,15 @@ const findAtendimentoByEmail = async (req, res) => {
 
 const atualizarStatusDoAtendimento = async (req, res) => {
     const id = req.params.id;
+    const status = req.body.status;
+   
+    if (!status || typeof status !== "boolean") {
+        res.status(400).send({
+            message: "Parâmetros inválidos"
+        })
 
-    //Verifica se usuario existe
+    }
+
     const atendimentoStatus = await atendimentoRepository.findAtendimentoById(id);
 
     if (!atendimentoStatus) {
@@ -71,10 +78,9 @@ const atualizarStatusDoAtendimento = async (req, res) => {
 
     try {
         
-        const statusAtualizado = await atendimentoRepository.atualizarStatusDoAtendimento(req.body, id);
+        const statusAtualizado = await atendimentoRepository.atualizarStatusDoAtendimento(atendimentoStatus, status);
 
-        
-        if (statusAtualizado == 1) {
+        if (statusAtualizado) {
             res.send({
                 message: "status atualizado com sucesso"
             });
@@ -83,6 +89,7 @@ const atualizarStatusDoAtendimento = async (req, res) => {
                 message: "Falha ao atualizar status"
             })
         };
+
     } catch(error){
         res.status(500).send(error)
     };
