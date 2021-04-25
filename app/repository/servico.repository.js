@@ -22,11 +22,11 @@ const findServicoById = async (id) => {
 
 const findServicoByName = async (nome) => {
     const data = await Servico.findOne({
-            where: { nome : nome }
-        });
+        where: {nome}
+    });
 
     return data;
-}
+};
 
 const updateById = async (servico, id) => {
     const data = await Servico.update(servico, {

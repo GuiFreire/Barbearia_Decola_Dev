@@ -1,13 +1,34 @@
-module.exports = app => {
-    const agendamentos = require ("../controllers/agendamento.controller");
+const agendamentos = require ("../controllers/agendamento.controller");
 
-    var router = require ("express").Router();
+const { Router } = require('express');
 
-    // Criar Agendamento
-    router.post("/", agendamentos.create);
+const agendamentoRouter = Router();
 
-    // Listar Todos Agendamentos
-    router.get("/", agendamentos.findAll);
+// Criar Agendamento
+agendamentoRouter.post("/", agendamentos.create);
 
-    app.use('/api/agendamento', router)
+// Listar Todos Agendamentos
+agendamentoRouter.get("/", agendamentos.findAll);
+
+//Atualizar agendamento por id
+agendamentoRouter.put("/:id", agendamentos.updateById);
+
+// Listar Agendamentos por nome
+agendamentoRouter.get("/clientes/:nome", agendamentos.findByName);
+
+//Deletar agendamento
+agendamentoRouter.delete("/:id", agendamentos.deleteAgendamento);
+
+// Listar Agendamento por data
+agendamentoRouter.get("/data/:data", agendamentos.findAgendamentoByData);
+
+// Listar Agendamento por nome de funcionario
+agendamentoRouter.get("/nomefuncionario/:nome", agendamentos.findByFuncionarioName);
+
+// Listar Agendamento por servico
+agendamentoRouter.get("/servico/:nome", agendamentos.findByServico);
+
+module.exports = {
+    agendamentoRouter,
 }
+

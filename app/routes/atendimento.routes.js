@@ -1,17 +1,19 @@
-module.exports = app => {
-    const atendimento = require("../controllers/atendimento.controller");
+const atendimento = require("../controllers/atendimento.controller");
 
-    var router = require("express").Router();
+const { Router } = require("express");
 
-    //Criar atendimento
-    router.post("/", atendimento.create);
+const atendimentoRouter = Router();
 
-    //Listar todos os atendimentos
-    router.get("/", atendimento.findAll);
+//Criar atendimento
+atendimentoRouter.post("/", atendimento.create);
 
-    router.get('/cliente-email/:email', atendimento.findAtendimentoByEmail);
+atendimentoRouter.get('/cliente-email/:email', atendimento.findAtendimentoByEmail);
 
-    router.put('/status-atendimento/:id', atendimento.atualizarStatusDoAtendimento);
+atendimentoRouter.put('/status-atendimento/:id', atendimento.atualizarStatusDoAtendimento);
 
-    app.use('/api/atendimento', router)
+//Listar todos os atendimentos
+atendimentoRouter.get("/", atendimento.findAll);
+
+module.exports = {
+    atendimentoRouter,
 }
