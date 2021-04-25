@@ -3,23 +3,36 @@ const servicoRepository = require('../repository/servico.repository');
 const create = async (req, res) => {
     const {nome , descricao, valor} = req.body
 
-    if (!nome) {
+    if (!nome || !descricao || !valor) {
         res.status(400).send({
-            message: "Nome não pode ser vazio!"
+            message: "Missing required value"
         })
         
         return;
     }
 
-    const servico = {
-        nome,
-        descricao,
-        valor,
+    const servicoExistente = await servicoRepository.findServicoByName(nome);
+
+    if (servicoExistente) {
+        res.status(400).send({
+            message: "Serviço já existe!"
+        })
     };
+
+    try {
+        const servico = {
+            nome,
+            descricao,
+            valor,
+        };
+        
+        const data = await servicoRepository.create(servico);
+        
+        res.send(data);
+    } catch(error) {
+        res.status(500).send(error)
+    }
     
-    const data = await servicoRepository.create(servico);
-    
-    res.send(data);
 }
 
 const findAll = async (req, res) => {

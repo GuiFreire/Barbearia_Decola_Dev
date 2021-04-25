@@ -16,10 +16,15 @@ const findAll = async () => {
                 model: Usuario,
                 as: 'clienteAgendamento',
                 attributes: ['id', 'nome', 'telefone']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'descricao', 'valor']
             }
             
         ],
-        attributes: ['data']
+        attributes: ['id', 'data']
     });
 
     return data;
@@ -33,11 +38,29 @@ const create = async (agendamento) => {
 
 const findAgendamentoByDataAndFuncionario = async (data, id_funcionario) => {
     const datas = await Agendamento.findOne({
-        where: { data, id_funcionario }
+       where: { data, id_funcionario } , 
+        include: [
+            {
+                model: Usuario,
+                as: 'funcionarioAgendamento',
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome', 'telefone']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'descricao', 'valor']
+            }
+        ],
+        attributes: ['id', 'data']
     });
 
     return datas;
-}
+};
 
 const updateById = async (agendamento, id) => {
     const data = await Agendamento.update(agendamento, {
@@ -46,6 +69,64 @@ const updateById = async (agendamento, id) => {
 
     return data
 };
+
+const findAgendamentoByData = async ( data ) => {
+    const datas = await Agendamento.findAll({
+        where: { data },
+        include: [
+            {
+                model: Usuario,
+                as: 'funcionarioAgendamento',
+                attributes: ['id', 'nome']
+            },
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome', 'telefone']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'descricao', 'valor']
+            }
+        ],
+        attributes: ['id', 'data']
+    });
+
+    return datas;
+};
+
+const deleteAgendamento = async (id) => {
+    const data = await Agendamento.destroy({
+        where: {id : id}
+    });
+
+    return data;
+};
+
+const findAgendamentoById = async (id) => {
+    const data = await Agendamento.findOne({
+        where: {id : id}
+    });
+
+    return data;
+};
+
+const findById = async (id) => {
+    const data = await Agendamento.findOne({
+        where: {id: id},
+        include: [
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome', 'descricao', 'valor']
+            }
+        ],
+            attributes: ['id', 'data']
+    });
+    return data;
+};
+
 
 const findByName = async (nome) => {
     const data = await Agendamento.findAll({
@@ -59,10 +140,10 @@ const findByName = async (nome) => {
                 model: Usuario,
                 as: 'clienteAgendamento',
                 where: {
-                          nome : nome ,
-                          tipo :1
+                  nome: nome,
+                  tipo: 1
                 },
-                attributes: ['id', 'nome']
+                attributes: ['id', 'nome', 'telefone']
             },
             {
                 model: Servico,
@@ -70,31 +151,64 @@ const findByName = async (nome) => {
                 attributes: ['id', 'nome', 'valor']
             }
         ],
-            attributes: ['id', 'data']
-            
+        attributes: ['id', 'data']
     });
 
     return data;
 };
 
-const findById = async (id) => {
-    const data = await Agendamento.findOne({
-        where: {id: id},
+
+const findByFuncionarioName = async (nome) => {
+    const data = await Agendamento.findAll({
         include: [
             {
                 model: Usuario,
-                as: 'clienteAgendamento',
+                as: 'funcionarioAgendamento',
+                where: {
+                  nome: nome,
+                  tipo: 2
+                },
                 attributes: ['id', 'nome']
             },
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome', 'telefone']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'valor']
+            }
+        ],
+        attributes: ['id', 'data']
+    });
+
+    return data;
+};
+
+
+
+const findByServico = async (nome) => {
+    const data = await Agendamento.findAll({
+        include: [
             {
                 model: Usuario,
                 as: 'funcionarioAgendamento',
                 attributes: ['id', 'nome']
             },
             {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome', 'telefone']
+            },
+            {
                 model: Servico,
                 as: 'servicoAgendamento',
-                attributes: ['id', 'nome', 'valor']
+                where: {
+                    nome : nome 
+                },
+                attributes: ['id', 'nome', 'descricao', 'valor']
             }
         ],
             attributes: ['id', 'data']
@@ -103,11 +217,17 @@ const findById = async (id) => {
     return data;
 }
 
+
 module.exports = {
     create,
     findAll,
     findAgendamentoByDataAndFuncionario,
     updateById,
     findByName,
-    findById
+    findById,
+    deleteAgendamento,
+    findAgendamentoById,
+    findAgendamentoByData,
+    findByFuncionarioName,
+    findByServico
 }
