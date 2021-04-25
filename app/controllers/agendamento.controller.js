@@ -104,7 +104,7 @@ const findByFuncionarioName = async (req, res) => {
     const agendamento = await agendamentoRepository.findByFuncionarioName(nome);
 
    
-    if (!agendamento) {
+    if (agendamento.length==0) {
         res.status(400).send({
             message: "O agendamento não existe"
         });
@@ -127,7 +127,7 @@ const findByServico = async (req, res) => {
     const agendamento = await agendamentoRepository.findByServico(nome);
 
    
-    if (!agendamento) {
+    if (agendamento.length==0) {
         res.status(400).send({
             message: "O agendamento não existe"
         });
