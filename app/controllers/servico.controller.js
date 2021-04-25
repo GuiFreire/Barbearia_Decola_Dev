@@ -17,17 +17,22 @@ const create = async (req, res) => {
         res.status(400).send({
             message: "Serviço já existe!"
         })
-    }
-
-    const servico = {
-        nome,
-        descricao,
-        valor,
     };
+
+    try {
+        const servico = {
+            nome,
+            descricao,
+            valor,
+        };
+        
+        const data = await servicoRepository.create(servico);
+        
+        res.send(data);
+    } catch(error) {
+        res.status(500).send(error)
+    }
     
-    const data = await servicoRepository.create(servico);
-    
-    res.send(data);
 }
 
 const findAll = async (req, res) => {

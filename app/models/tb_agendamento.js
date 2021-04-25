@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     
     tb_agendamento.belongsTo(models.tb_usuarios, { foreignKey: 'id_cliente', as: 'clienteAgendamento' });
     
+
     tb_agendamento.belongsTo(models.tb_servicos, { foreignKey: 'id_servico', as: 'servicoAgendamento'});
   };
 
