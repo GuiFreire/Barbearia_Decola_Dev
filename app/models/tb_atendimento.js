@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+  
   tb_atendimento.init({
     nome: DataTypes.STRING,
     email: DataTypes.STRING,

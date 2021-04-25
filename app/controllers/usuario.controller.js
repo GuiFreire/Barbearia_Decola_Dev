@@ -1,4 +1,5 @@
 const usuarioRepository = require("../repository/usuario.repository");
+const agendamentoRepository = require("../repository/agendamento.repository");
 
 const create = async (req, res) => {
     const { nome, cpf, email, telefone, senha, tipo, url } = req.body;
@@ -228,10 +229,66 @@ const findFuncionarioByNomeAndTipo = async ( req, res) =>{
         }
 };
 
+const findFuncByPhone = async (req, res) => {
+    const telefone = req.params.telefone;
+
+    try {
+        const usuario = await usuarioRepository.findFuncByPhone(telefone);
+
+        if (!usuario) {
+            res.status(400).send({
+                message: "Telefone de funcionario inexistente"
+            });
+
+            return;
+        };
+
+        res.send(usuario);
+    } catch(error) {
+        res.status(500).send(error);
+    };
+}
+
+
+const deleteUsuario = async (req, res) => {
+    const id = req.params.id;
+
+    //valida se usuário existe
+    const usuario = await usuarioRepository.findUsuarioById(id);
+
+    //Se não existir, não deixa deletar
+    if (!usuario) {
+        res.status(400).send({
+            message: "O usuario em questão não existe"
+        });
+
+        return;
+    };
+
+    try {
+        const usuarioDeletado = await usuarioRepository.deleteUsuario(id)
+        if (usuarioDeletado == 1) {
+            res.send({
+                message: "Usuario deletado com sucesso"
+            });
+        } else {
+            res.send({
+                message: "Não foi possível deletar o usuário"
+            });
+        };
+    } catch(error) {
+        res.status(500).send(error)
+    };
+};
+
+
+
 module.exports = {
     create,
     findClientes,
     findFuncionarios,
+    findFuncByPhone,
+    deleteUsuario,
     findFuncionarioByEmail,
     findFuncionarioByCpf,
     findClienteByEmail,

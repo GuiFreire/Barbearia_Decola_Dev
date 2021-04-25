@@ -32,9 +32,14 @@ module.exports = app => {
     //Buscar Cliente por Email
     router.get("/cliente-email/:email", usuario.findClienteByEmail);/// concluido
 
+     //Listar Funcionarios por telefone
+    router.get("/funcionariostelefone/:telefone", usuario.findFuncByPhone);
+
+    //Deletar usuario por id
+    router.delete("/:id", usuario.deleteUsuario);
+
     //Buscar Cliente por telefone
     router.get("/cliente-telefone/:telefone", usuario.findClienteByTelefone);
     
-
     app.use('/api/usuario', router)
 }
