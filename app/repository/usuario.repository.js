@@ -43,7 +43,7 @@ const findUserByEmailOrCpfOrPhone = async (email, cpf, telefone) => {
 
 const findFuncionarioByEmail = async (email) => {
     const data = await Usuario.findOne({
-        where: { email: email}
+        where: { email: email, tipo: 2}
         
     });
 
@@ -53,7 +53,7 @@ const findFuncionarioByEmail = async (email) => {
 
 const findFuncionarioByCpf = async (cpf) => {
     const data = await Usuario.findOne({
-        where: {cpf: cpf} 
+        where: {cpf: cpf, tipo: 2} 
     });
 
     return data;
@@ -62,7 +62,7 @@ const findFuncionarioByCpf = async (cpf) => {
 
 const findClienteByEmail = async (email) => {
     const data = await Usuario.findOne({
-        where:{ email: email } 
+        where:{ email: email, tipo: 1 } 
     
     }); 
 
@@ -71,7 +71,7 @@ const findClienteByEmail = async (email) => {
 
 const findClienteByTelefone = async (telefone) => {
     const data = await Usuario.findOne({
-        where: {telefone: telefone} 
+        where: {telefone: telefone , tipo: 1} 
     });
 
     return data;
