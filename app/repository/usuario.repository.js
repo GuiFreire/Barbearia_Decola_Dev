@@ -8,12 +8,26 @@ const create = async (usuario) => {
 
     return data;
 };
+const updateUser = async (usuario, id) => {
+    const data = await Usuario.update(usuario, {
+        where: {id : id}
+    });
+
+    return data
+};
 
 const findClientes = async () => {
     const data = await Usuario.findAll({
         where: {tipo: 1}
     });
 
+    return data;
+};
+
+const findUsuarioById = async (id) => {
+    const data = await Usuario.findOne({
+        where: {id} 
+    });
     return data;
 };
 
@@ -43,24 +57,24 @@ const findUserByEmailOrCpfOrPhone = async (email, cpf, telefone) => {
 
 const findClienteByNomeAndTipo = async(nome) =>{
     const data = await Usuario.findOne({
-        where: {[Op.and]: [{ tipo: 1 }, { nome : nome }]}
-    })
+        where:{[Op.and]: [{ tipo: 1 }, { nome : nome }]}
+    });
     return data
-}
+};
 
 const findClienteByCpf =  async (cpf) => {
     const data = await Usuario.findOne({
         where: {cpf:cpf}
-    })
+    });
     return data
-}
+};
 
-const findFuncionarioByNomeAndTipo = async(nome,tipo) =>{
-    const data = await usuario.findOne({
+const findFuncionarioByNomeAndTipo = async(nome) =>{
+    const data = await Usuario.findOne({
         where: {[Op.and]: [{ tipo: 2 }, { nome : nome }]}
-    })
+    });
     return data
-}
+};
 module.exports = {
     create,
     findClientes,
@@ -70,4 +84,6 @@ module.exports = {
     findClienteByNomeAndTipo,
     findClienteByCpf,
     findFuncionarioByNomeAndTipo,
+    updateUser,
+    findUsuarioById
 }

@@ -40,29 +40,29 @@ const create = async (req, res) => {
 };
 
 const update = async (req, res) => {
-    
-    const nome = req.params.nome;
-    const tipo= req.params.tipo
+    //Pegando o ID da rota
+    const id = req.params.id;
 
-    
-    const usuario = await usuarioRepository.findClienteByNomeAndTipo&&findFuncionarioByNomeAndTipo(nome,tipo);
+    //Verifica se usuario existe
+    const usuario = await usuarioRepository.findUsuarioById(id);
 
+    //Se o usuario não existir, não atualiza
     if (!usuario) {
         res.status(400).send({
-            message: "Usuario não existe para poder atualizar"
+            message: "usuario não existe"
         })
 
-        return
+        return;
     };
 
     try {
         
-        const usuarioRetorno = await usuarioRepository.updateByNomeAndTipo(req.body, nome,tipo);
+        const usuarioAtualizado = await usuarioRepository.updateUser(req.body, id);
 
-        //Verificando se o serviço foi atualizad
-        if (usuarioRetorno == 1) {
+        
+        if (usuarioAtualizado == 1) {
             res.send({
-                message: "Usuario atualizado com sucesso"
+                message: "usuario atualizado com sucesso"
             });
         } else {
             res.send({
@@ -75,10 +75,9 @@ const update = async (req, res) => {
 };
 
 const findClienteByNomeAndTipo = async(req,res) =>{
-    const name =  req.params.name;
-    const tipo = req.params.tipo
-    const usuario = await usuarioRepository.findClienteByNomeAndTipo(name,tipo);
-    res.send(usuario)
+    const nome =  req.params.nome;
+    const usuario = await usuarioRepository.findClienteByNomeAndTipo(nome);
+   
 
         if(!usuario){
             res.status(400).send({mensage: "cliente nao encontrado"})
@@ -87,7 +86,7 @@ const findClienteByNomeAndTipo = async(req,res) =>{
         }
 
         try {
-            const usuarioRetorno =await usuarioRepository.findClienteByNameAndTipo(name,tipo)
+            const usuarioRetorno =await usuarioRepository.findClienteByNameAndTipo(nome)
             res.send(usuarioRetorno)
         }catch (error){
             res.status(500).send(error)
@@ -125,10 +124,9 @@ const findFuncionarios = async (req, res) => {
 }
 
 const findFuncionarioByNomeAndTipo =  async ( req, res) =>{
-    const name = req.params.name;
-    const tipo =req.params.tipo
-    const usuario = await usuarioRepository.findFuncionarioByNomeAndTipo(name,tipo);
-    res.send(usuario)
+    const nome = req.params.nome;
+    const usuario = await usuarioRepository.findFuncionarioByNomeAndTipo(nome);
+    
 
         if(!usuario){
             res.status(400).send({mensage: "funcionario nao encontrado"})
@@ -137,7 +135,7 @@ const findFuncionarioByNomeAndTipo =  async ( req, res) =>{
         }
 
         try {
-            const usuarioRetorno =await usuarioRepository.findFuncionarioByNomeAndTipo(name,tipo)
+            const usuarioRetorno =await usuarioRepository.findFuncionarioByNomeAndTipo(nome)
             res.send(usuarioRetorno)
         }catch (error){
             res.status(500).send(error)
@@ -151,7 +149,7 @@ module.exports = {
     findClienteByNomeAndTipo,
     findFuncionarioByNomeAndTipo,
     findClienteByCpf,
-    update,
+    update
     
     
 
