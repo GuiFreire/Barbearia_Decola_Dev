@@ -11,5 +11,7 @@ module.exports = app => {
 
     router.get('/cliente-email/:email', atendimento.findAtendimentoByEmail);
 
+    router.put('/status-atendimento/:id', atendimento.atualizarStatusDoAtendimento);
+
     app.use('/api/atendimento', router)
 }

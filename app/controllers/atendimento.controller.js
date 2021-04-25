@@ -17,7 +17,8 @@ const create = async (req, res) => {
             email,
             celular,
             assunto,
-            mensagem
+            mensagem,
+            status: req.body.status ? req.body.status : false
         });
         
         res.status(201).send(atendimentoCriado);
@@ -54,9 +55,43 @@ const findAtendimentoByEmail = async (req, res) => {
     };
 };
 
+const atualizarStatusDoAtendimento = async (req, res) => {
+    const id = req.params.id;
+
+    //Verifica se usuario existe
+    const atendimentoStatus = await atendimentoRepository.findAtendimentoById(id);
+
+    if (!atendimentoStatus) {
+        res.status(400).send({
+            message: "Nenhum atendimento encontrado"
+        })
+
+        return;
+    };
+
+    try {
+        
+        const statusAtualizado = await atendimentoRepository.atualizarStatusDoAtendimento(req.body, id);
+
+        
+        if (statusAtualizado == 1) {
+            res.send({
+                message: "status atualizado com sucesso"
+            });
+        } else {
+            res.send({
+                message: "Falha ao atualizar status"
+            })
+        };
+    } catch(error){
+        res.status(500).send(error)
+    };
+};
+
 
 module.exports = {
     create,
     findAll,
-    findAtendimentoByEmail
+    findAtendimentoByEmail,
+    atualizarStatusDoAtendimento
 }

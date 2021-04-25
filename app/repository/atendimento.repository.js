@@ -14,16 +14,35 @@ const findAll = async () => {
     return data;
 };
 
+const findAtendimentoById = async (id) => {
+    const data = await Atendimento.findOne({ where: { id }});
+
+    return data;
+};
+
+
 const findAtendimentoByEmail = async (email) => {
     const data = await Atendimento.findOne({
         where: { email: email }
     })
 
-    return data
+    return data;
 };
+
+const atualizarStatusDoAtendimento = async (status, id) => {
+    const data = await Atendimento.update(status, {
+        where: { id : id }
+    });
+
+    return data;
+}
+
+
 
 module.exports = {
     create,
     findAll,
-    findAtendimentoByEmail
+    findAtendimentoByEmail,
+    atualizarStatusDoAtendimento,
+    findAtendimentoById
 }
