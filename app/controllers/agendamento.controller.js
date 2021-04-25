@@ -77,69 +77,63 @@ const create = async (req, res) => {
 const findAgendamentoByData = async (req, res) => {
     const data = req.params.data;
 
-    //valida se agendamento existe
-    const agendamento = await agendamentoRepository.findAgendamentoByData(data);
-
-    
-    if (!agendamento) {
-        res.status(400).send({
-            message: "Agendamento não existe"
-        });
-
-        return;
-    };
-
     try {
-        const agendamentoRetorno = await agendamentoRepository.findAgendamentoByData(data)
-        res.send(agendamentoRetorno)
+        //valida se agendamento existe
+        const agendamento = await agendamentoRepository.findAgendamentoByData(data);
+    
+        if (!agendamento) {
+            res.status(400).send({
+                message: "Agendamento não existe"
+            });
+
+            return;
+        };
+
+        res.send(agendamento);
     } catch(error) {
-        res.status(500).send(error)
+        res.status(500).send(error);
     };
 };
 
 const findByFuncionarioName = async (req, res) => {
     const nome = req.params.nome;
 
-    //valida se o agendamento existe
-    const agendamento = await agendamentoRepository.findByFuncionarioName(nome);
-
-   
-    if (!agendamento) {
-        res.status(400).send({
-            message: "O agendamento não existe"
-        });
-
-        return;
-    };
-
     try {
-        const agendamentoRetorno = await agendamentoRepository.findByFuncionarioName(nome)
-        res.send(agendamentoRetorno)
+        //valida se o agendamento existe
+        const agendamento = await agendamentoRepository.findByFuncionarioName(nome);
+
+        if (!agendamento.length) {
+            res.status(400).send({
+                message: "O agendamento não existe"
+            });
+
+            return;
+        };
+
+        res.send(agendamento);
     } catch(error) {
-        res.status(500).send(error)
+        res.status(500).send(error);
     };
 };
 
 const findByServico = async (req, res) => {
     const nome = req.params.nome;
 
-    //valida se o agendamento existe
-    const agendamento = await agendamentoRepository.findByServico(nome);
-
-   
-    if (!agendamento) {
-        res.status(400).send({
-            message: "O agendamento não existe"
-        });
-
-        return;
-    };
-
     try {
-        const agendamentoRetorno = await agendamentoRepository.findByServico(nome)
-        res.send(agendamentoRetorno)
+        //valida se o agendamento existe
+        const agendamento = await agendamentoRepository.findByServico(nome);
+   
+        if (!agendamento.length) {
+            res.status(400).send({
+                message: "O agendamento não existe"
+            });
+
+            return;
+        };
+
+        res.send(agendamento);
     } catch(error) {
-        res.status(500).send(error)
+        res.status(500).send(error);
     };
 };
 
