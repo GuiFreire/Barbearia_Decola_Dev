@@ -76,9 +76,9 @@ const findAgendamentoByData = async (req, res) => {
         //valida se agendamento existe
         const agendamento = await agendamentoRepository.findAgendamentoByData(data);
     
-        if (!agendamento) {
+        if (!agendamento.length) {
             res.status(400).send({
-                message: "Agendamento não existe"
+                message: "Não existe agendamento nessa data"
             });
 
             return;

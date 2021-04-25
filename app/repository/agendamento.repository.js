@@ -16,9 +16,14 @@ const findAll = async () => {
                 model: Usuario,
                 as: 'clienteAgendamento',
                 attributes: ['id', 'nome', 'telefone']
+            },
+            {
+                model: Servico,
+                as: 'servicoAgendamento',
+                attributes: ['id', 'nome', 'descricao', 'valor']
             }
         ],
-        attributes: ['data']
+        attributes: ['id', 'data']
     });
 
     return data;
@@ -47,7 +52,7 @@ const findAgendamentoByDataAndFuncionario = async (data, id_funcionario) => {
             {
                 model: Servico,
                 as: 'servicoAgendamento',
-                attributes: ['id', 'nome', 'desricao', 'valor']
+                attributes: ['id', 'nome', 'descricao', 'valor']
             }
         ],
         attributes: ['id', 'data']
@@ -57,7 +62,7 @@ const findAgendamentoByDataAndFuncionario = async (data, id_funcionario) => {
 }
 
 const findAgendamentoByData = async ( data ) => {
-    const datas = await Agendamento.findOne({
+    const datas = await Agendamento.findAll({
         where: { data },
         include: [
             {
