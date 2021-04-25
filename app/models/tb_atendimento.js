@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     celular: DataTypes.STRING,
     assunto: DataTypes.STRING,
-    mensagem: DataTypes.STRING
+    mensagem: DataTypes.STRING,
+    status: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'tb_atendimento',
