@@ -56,10 +56,20 @@ const findUserByEmailOrCpfOrPhone = async (email, cpf, telefone) => {
 };
 
 const findClienteByNomeAndTipo = async(nome) =>{
-    const data = await Usuario.findOne({
-        where:{[Op.and]: [{ tipo: 1 }, { nome : nome }]}
+    const data = await Usuario.findAll({
+        where: {
+            [Op.and]: [
+                { tipo: 1 },
+                {
+                    nome: {
+                        [Op.like]: `${nome}%`
+                    }
+                }
+            ]
+        }
     });
-    return data
+
+    return data;
 };
 
 const findClienteByCpf =  async (cpf) => {
@@ -70,8 +80,17 @@ const findClienteByCpf =  async (cpf) => {
 };
 
 const findFuncionarioByNomeAndTipo = async(nome) =>{
-    const data = await Usuario.findOne({
-        where: {[Op.and]: [{ tipo: 2 }, { nome : nome }]}
+    const data = await Usuario.findAll({
+        where: {
+            [Op.and]: [
+                { tipo: 2 },
+                {
+                    nome: {
+                        [Op.like]: `${nome}%`
+                    }
+                }
+            ]
+        }
     });
     return data
 };
