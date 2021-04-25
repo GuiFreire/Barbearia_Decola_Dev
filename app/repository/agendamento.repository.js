@@ -85,7 +85,23 @@ const findAgendamentoByData = async ( data ) => {
     });
 
     return datas;
-}
+};
+
+const deleteAgendamento = async (id) => {
+    const data = await Agendamento.destroy({
+        where: {id : id}
+    });
+
+    return data;
+};
+
+const findAgendamentoById = async (id) => {
+    const data = await Agendamento.findOne({
+        where: {id : id}
+    });
+
+    return data;
+};
 
 const findByFuncionarioName = async (nome) => {
     const data = await Agendamento.findAll({
@@ -145,6 +161,8 @@ module.exports = {
     create,
     findAll,
     findAgendamentoByDataAndFuncionario,
+    deleteAgendamento,
+    findAgendamentoById,
     findAgendamentoByData,
     findByFuncionarioName,
     findByServico

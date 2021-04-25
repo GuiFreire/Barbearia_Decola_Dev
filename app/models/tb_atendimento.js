@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     assunto: DataTypes.STRING,
     mensagem: DataTypes.STRING,
     status: DataTypes.BOOLEAN
-    
   }, {
     sequelize,
     modelName: 'tb_atendimento',

@@ -9,6 +9,14 @@ const create = async (req, res) => {
         })
         
         return;
+    }
+
+    const servicoExistente = await servicoRepository.findServicoByName(nome);
+
+    if (servicoExistente) {
+        res.status(400).send({
+            message: "Serviço já existe!"
+        })
     };
 
     try {
