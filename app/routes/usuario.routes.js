@@ -23,6 +23,18 @@ module.exports = app => {
      //buscar funcionario por nome
     router.get("/funcionario-nome/:nome",usuario.findFuncionarioByNomeAndTipo);
 
-   
+    //Buscar Funcionario por Email
+    router.get("/funcionario-email/:email", usuario.findFuncionarioByEmail);
+
+    //Buscar Funcionario por CPF
+    router.get("/funcionario-cpf/:cpf", usuario.findFuncionarioByCpf);
+
+    //Buscar Cliente por Email
+    router.get("/cliente-email/:email", usuario.findClienteByEmail);/// concluido
+
+    //Buscar Cliente por telefone
+    router.get("/cliente-telefone/:telefone", usuario.findClienteByTelefone);
+    
+
     app.use('/api/usuario', router)
 }

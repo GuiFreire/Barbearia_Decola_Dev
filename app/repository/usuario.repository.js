@@ -55,6 +55,42 @@ const findUserByEmailOrCpfOrPhone = async (email, cpf, telefone) => {
     return data;
 };
 
+const findFuncionarioByEmail = async (email) => {
+    const data = await Usuario.findOne({
+        where: { email: email, tipo: 2}
+        
+    });
+
+    return data; 
+
+};
+
+const findFuncionarioByCpf = async (cpf) => {
+    const data = await Usuario.findOne({
+        where: {cpf: cpf, tipo: 2} 
+    });
+
+    return data;
+  
+};
+
+const findClienteByEmail = async (email) => {
+    const data = await Usuario.findOne({
+        where:{ email: email, tipo: 1 } 
+    
+    }); 
+
+    return data;
+};
+
+const findClienteByTelefone = async (telefone) => {
+    const data = await Usuario.findOne({
+        where: {telefone: telefone , tipo: 1} 
+    });
+
+    return data;
+};
+
 const findClienteByNomeAndTipo = async(nome) =>{
     const data = await Usuario.findAll({
         where: {
@@ -94,12 +130,17 @@ const findFuncionarioByNomeAndTipo = async(nome) =>{
     });
     return data
 };
+
 module.exports = {
     create,
     findClientes,
     findFuncionarios,
     findUserByIdAndType,
     findUserByEmailOrCpfOrPhone,
+    findFuncionarioByEmail,
+    findFuncionarioByCpf,
+    findClienteByEmail,
+    findClienteByTelefone,
     findClienteByNomeAndTipo,
     findClienteByCpf,
     findFuncionarioByNomeAndTipo,
