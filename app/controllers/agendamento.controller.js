@@ -93,17 +93,19 @@ const findByName = async (req, res) => {
 
     const agendamento = await agendamentoRepository.findByName(nome);
 
-    if (!agendamento) {
-        res.status(400).send({
-            message: "Agendamento inexistente"
-        });
-
-        return;
-    };
-
     try {
+
+        if (agendamento.length == 0) {
+            res.status(400).send({
+                message: "Agendamento inexistente"
+            });
+
+            return;
+        };
+
+   
         const agendamentoRetorno = await agendamentoRepository.findByName(nome)
-            res.send(agendamentoRetorno)
+        res.send(agendamentoRetorno)
             
     } catch(error) {
         res.status(500).send(error)

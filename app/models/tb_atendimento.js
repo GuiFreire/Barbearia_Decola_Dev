@@ -13,12 +13,14 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+  
   tb_atendimento.init({
     nome: DataTypes.STRING,
     email: DataTypes.STRING,
     celular: DataTypes.STRING,
     assunto: DataTypes.STRING,
-    mensagem: DataTypes.STRING
+    mensagem: DataTypes.STRING,
+    status: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'tb_atendimento',

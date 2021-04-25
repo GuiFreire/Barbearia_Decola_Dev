@@ -68,18 +68,18 @@ const findProdutoById = async (req, res) => {
     //valida se produto existe
     const produto = await produtoRepository.findProdutoById(id);
 
-    //Se não existir, não deixa deletar
-    if (!produto) {
-        res.status(400).send({
-            message: "O produto em questão não existe"
-        });
-
-        return;
-    };
-
     try {
+        if (!produto) {
+            res.status(400).send({
+                message: "O produto em questão não existe"
+            });
+
+            return;
+        };
+  
         const produtoRetorno = await produtoRepository.findProdutoById(id)
         res.send(produtoRetorno)
+        
     } catch(error) {
         res.status(500).send(error)
     };
