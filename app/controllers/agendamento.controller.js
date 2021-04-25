@@ -7,12 +7,7 @@ const findAll = async (req, res) => {
     const agendamentos = await agendamentoRepository.findAll();
 
     res.send(agendamentos);
-
-
 }
-
-
-
 
 const create = async (req, res) => {
     const { data, id_cliente, id_funcionario, id_servico } = req.body;
@@ -143,6 +138,5 @@ module.exports = {
     findAll,
     findAgendamentoByData,
     findByFuncionarioName,
-    findByServico
-    
+    findByServico  
 }
