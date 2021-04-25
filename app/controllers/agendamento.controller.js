@@ -2,6 +2,7 @@ const agendamentoRepository = require("../repository/agendamento.repository");
 const usuarioRepository = require("../repository/usuario.repository");
 const servicoRepository = require("../repository/servico.repository");
 
+
 const findAll = async (req, res) => {
     const agendamentos = await agendamentoRepository.findAll();
 
@@ -68,7 +69,74 @@ const create = async (req, res) => {
     
 }
 
+const findAgendamentoByData = async (req, res) => {
+    const data = req.params.data;
+
+    try {
+        //valida se agendamento existe
+        const agendamento = await agendamentoRepository.findAgendamentoByData(data);
+    
+        if (!agendamento) {
+            res.status(400).send({
+                message: "Agendamento não existe"
+            });
+
+            return;
+        };
+
+        res.send(agendamento);
+    } catch(error) {
+        res.status(500).send(error);
+    };
+};
+
+const findByFuncionarioName = async (req, res) => {
+    const nome = req.params.nome;
+
+    try {
+        //valida se o agendamento existe
+        const agendamento = await agendamentoRepository.findByFuncionarioName(nome);
+
+        if (!agendamento.length) {
+            res.status(400).send({
+                message: "O agendamento não existe"
+            });
+
+            return;
+        };
+
+        res.send(agendamento);
+    } catch(error) {
+        res.status(500).send(error);
+    };
+};
+
+const findByServico = async (req, res) => {
+    const nome = req.params.nome;
+
+    try {
+        //valida se o agendamento existe
+        const agendamento = await agendamentoRepository.findByServico(nome);
+   
+        if (!agendamento.length) {
+            res.status(400).send({
+                message: "O agendamento não existe"
+            });
+
+            return;
+        };
+
+        res.send(agendamento);
+    } catch(error) {
+        res.status(500).send(error);
+    };
+};
+
+
 module.exports = {
     create,
-    findAll
+    findAll,
+    findAgendamentoByData,
+    findByFuncionarioName,
+    findByServico  
 }
