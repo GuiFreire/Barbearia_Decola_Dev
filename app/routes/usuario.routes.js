@@ -12,8 +12,6 @@ module.exports = app => {
     //Listar Funcionarios
     router.get("/funcionarios", usuario.findFuncionarios);
 
-
-
     //Buscar Funcionario por Email
     router.get("/funcionario-email/:email", usuario.findFuncionarioByEmail);
 
