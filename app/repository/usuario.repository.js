@@ -24,13 +24,6 @@ const findClientes = async () => {
     return data;
 };
 
-const findUsuarioById = async (id) => {
-    const data = await Usuario.findOne({
-        where: {id} 
-    });
-    return data;
-};
-
 const findFuncionarios = async () => {
     const data = await Usuario.findAll({
         where: {tipo: 2}
@@ -175,5 +168,4 @@ module.exports = {
     findClienteByCpf,
     findFuncionarioByNomeAndTipo,
     updateUser,
-    findUsuarioById
 }

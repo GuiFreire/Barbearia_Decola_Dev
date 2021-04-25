@@ -104,22 +104,14 @@ const deleteAgendamento = async (id) => {
     return data;
 };
 
-const findAgendamentoById = async (id) => {
-    const data = await Agendamento.findOne({
-        where: {id : id}
-    });
-
-    return data;
-};
-
 const findById = async (id) => {
     const data = await Agendamento.findOne({
-        where: {id: id},
+        where: { id: id },
         include: [
             {
                 model: Usuario,
                 as: 'clienteAgendamento',
-                attributes: ['id', 'nome', 'descricao', 'valor']
+                attributes: ['id', 'nome']
             }
         ],
             attributes: ['id', 'data']
@@ -217,6 +209,39 @@ const findByServico = async (nome) => {
     return data;
 }
 
+const findByAgendamentoByClienteId = async (id, tipo) => {
+    const data = await Agendamento.findAll({
+        include: [
+            {
+                model: Usuario,
+                as: 'clienteAgendamento',
+                attributes: ['id', 'nome'],
+                where: { id, tipo },
+            }
+        ],
+        attributes: ['id', 'data']
+    });
+
+    return data;
+};
+
+const findByAgendamentoByFuncionarioId = async (id, tipo) => {
+    const data = await Agendamento.findAll({
+        include: [
+            {
+                model: Usuario,
+                as: 'funcionarioAgendamento',
+                attributes: ['id', 'nome'],
+                where: { id, tipo },
+            }
+        ],
+        attributes: ['id', 'data']
+    });
+
+    return data;
+};
+
+
 
 module.exports = {
     create,
@@ -226,8 +251,9 @@ module.exports = {
     findByName,
     findById,
     deleteAgendamento,
-    findAgendamentoById,
     findAgendamentoByData,
     findByFuncionarioName,
-    findByServico
+    findByServico,
+    findByAgendamentoByClienteId,
+    findByAgendamentoByFuncionarioId
 }

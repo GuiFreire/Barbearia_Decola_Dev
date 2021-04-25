@@ -74,7 +74,7 @@ const deleteAgendamento = async (req, res) => {
     const id = req.params.id
 
     //Validar se o agendamento existe
-    const agendamento = await agendamentoRepository.findAgendamentoById(id);
+    const agendamento = await agendamentoRepository.findById(id);
 
     //Se o agendamento não existir, erro
     if (!agendamento) {

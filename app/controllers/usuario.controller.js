@@ -265,6 +265,22 @@ const deleteUsuario = async (req, res) => {
         return;
     };
 
+    let agendamentos;
+
+    if (usuario.tipo === 1) {
+        agendamentos = await agendamentoRepository.findByAgendamentoByClienteId(id, usuario.tipo);
+    } else {
+        agendamentos = await agendamentoRepository.findByAgendamentoByFuncionarioId(id, usuario.tipo);
+    }
+
+    if (agendamentos.length) {
+        res.status(400).send({
+            message: "O usuário em questão está presente em um agendamento e não pode ser deletado."
+        });
+
+        return;
+    }
+
     try {
         const usuarioDeletado = await usuarioRepository.deleteUsuario(id)
         if (usuarioDeletado == 1) {
