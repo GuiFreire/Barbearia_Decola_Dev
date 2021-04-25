@@ -1,14 +1,17 @@
-module.exports = app => {
-    const servico = require("../controllers/servico.controller");
 
-    var router = require("express").Router();
+const servico = require("../controllers/servico.controller");
 
-    //Criar serviço
-    router.post("/", servico.create);
-    //Listar serviços
-    router.get('/', servico.findAll)
-    //Atualizar serviço por ID
-    router.put('/:id', servico.update)
+const { Router } = require("express");
 
-    app.use('/api/servico', router)
+const servicoRouter = Router();
+
+//Criar serviço
+servicoRouter.post("/", servico.create);
+//Listar serviços
+servicoRouter.get('/', servico.findAll);
+//Atualizar serviço por ID
+servicoRouter.put('/:id', servico.update);
+
+module.exports = {
+    servicoRouter
 }

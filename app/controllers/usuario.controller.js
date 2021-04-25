@@ -1,5 +1,7 @@
 const usuarioRepository = require("../repository/usuario.repository");
+
 const agendamentoRepository = require("../repository/agendamento.repository");
+
 
 const create = async (req, res) => {
     const { nome, cpf, email, telefone, senha, tipo, url } = req.body;
@@ -146,7 +148,6 @@ const findFuncionarioByEmail= async (req, res) => {
         };
 };
 
-
 const findFuncionarioByCpf= async (req, res) => {
 
     const cpf = req.params.cpf;
@@ -167,7 +168,6 @@ const findFuncionarioByCpf= async (req, res) => {
         };
 };
 
-
 const findClienteByEmail = async (req, res) => {
     const email = req.params.email;
 
@@ -187,7 +187,6 @@ const findClienteByEmail = async (req, res) => {
         };
 };
 
-
 const findClienteByTelefone = async (req, res) => {
     const telefone = req.params.telefone;
 
@@ -206,7 +205,6 @@ const findClienteByTelefone = async (req, res) => {
             res.status(500).send(error);
         };
 };
-
 
 const findFuncionarioByNomeAndTipo = async ( req, res) =>{
     const nome = req.params.nome;
@@ -248,7 +246,6 @@ const findFuncByPhone = async (req, res) => {
         res.status(500).send(error);
     };
 }
-
 
 const deleteUsuario = async (req, res) => {
     const id = req.params.id;
@@ -297,10 +294,7 @@ const deleteUsuario = async (req, res) => {
     };
 };
 
-
-
 module.exports = {
-    create,
     findClientes,
     findFuncionarios,
     findFuncByPhone,
@@ -312,5 +306,6 @@ module.exports = {
     findClienteByNomeAndTipo,
     findFuncionarioByNomeAndTipo,
     findClienteByCpf,
-    update
+    update,
+    create
 }

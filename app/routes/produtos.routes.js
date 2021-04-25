@@ -1,26 +1,27 @@
-module.exports = app => {
-    const produto = require("../controllers/produtos.controller");
+const produto = require("../controllers/produtos.controller");
 
-    var router = require("express").Router();
+const { Router } = require("express");
 
-    //Criar produtos
-    router.post("/", produto.create);
+const produtosRouter = Router();
 
-    //Listar todos os produtos
-    router.get("/", produto.findAll);
+//Criar produtos
+produtosRouter.post("/", produto.create);
 
-    //Atualizar produto por id
-    router.put("/:id", produto.updateOne);
+//Listar todos os produtos
+produtosRouter.get("/", produto.findAll);
 
-    //Buscar produto por id
-    router.get("/:id", produto.findProdutoById);
+//Atualizar produto por id
+produtosRouter.put("/:id", produto.updateOne);
 
-    //Buscar produto por nome
-    router.get("/nome/:nome", produto.findProdutoByName);
+//Buscar produto por id
+produtosRouter.get("/:id", produto.findProdutoById);
 
-    //Deletar produto por id
-    router.delete("/:id", produto.deleteProduto);
+//Buscar produto por nome
+produtosRouter.get("/nome/:nome", produto.findProdutoByName);
 
+//Deletar produto por id
+produtosRouter.delete("/:id", produto.deleteProduto);
 
-    app.use("/api/produto", router);
+module.exports = {
+    produtosRouter
 }

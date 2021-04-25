@@ -1,8 +1,7 @@
 const agendamentoRepository = require("../repository/agendamento.repository");
 const usuarioRepository = require("../repository/usuario.repository");
 const servicoRepository = require("../repository/servico.repository");
-const { default: corde } = require("corde");
-
+const { differenceInCalendarDays, differenceInHours   } = require('date-fns');
 
 const findAll = async (req, res) => {
     const agendamentos = await agendamentoRepository.findAll();
@@ -14,6 +13,21 @@ const create = async (req, res) => {
     const { data, id_cliente, id_funcionario, id_servico } = req.body;
 
     try {
+        const diaAtual = new Date();
+        const diferencaEntreDias = differenceInCalendarDays(new Date(data), diaAtual);
+
+        if (diferencaEntreDias > 60) {
+            res.status(400).send({ message: 'O limite para criação de agendamentos é de 2 meses.'});
+
+            return;
+        }
+
+        if (diferencaEntreDias < 0) {
+            res.status(400).send({ message: 'Não é possível realizar agendamentos para horários passados.'});
+
+            return;
+        }
+
         // validar se o cliente existe
         const cliente = await usuarioRepository.findUserByIdAndType(id_cliente, 1);
 
@@ -72,6 +86,7 @@ const create = async (req, res) => {
 
 const deleteAgendamento = async (req, res) => {
     const id = req.params.id
+    
 
     //Validar se o agendamento existe
     const agendamento = await agendamentoRepository.findById(id);
@@ -82,6 +97,16 @@ const deleteAgendamento = async (req, res) => {
             message: "Agendamento não existe"
         });
     };
+
+    const diaAtual = new Date();
+    
+    const diferencaEntreHoras = differenceInHours(new Date(agendamento.data), diaAtual);
+
+    if (diferencaEntreHoras < 4) {
+        res.status(400).send({ message: 'Não é possível cancelar o agendamento'});
+
+        return;
+    }
 
     try {
         const data = await agendamentoRepository.deleteAgendamento(id)

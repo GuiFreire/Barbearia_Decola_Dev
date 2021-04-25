@@ -1,45 +1,46 @@
-module.exports = app => {
-    const usuario = require("../controllers/usuario.controller");
 
-    var router = require ("express").Router();
+const usuario = require("../controllers/usuario.controller");
 
-    //Criar usuário
-    router.post("/", usuario.create);
-    // atualizar usuario
-    router.put("/:id",usuario.update);
+const { Router } = require("express");
 
-    //Listar Clientes
-    router.get("/clientes", usuario.findClientes);
+const usuarioRouter = Router();
 
-    //buscar cliente por nome
-    router.get("/cliente-nome/:nome",usuario.findClienteByNomeAndTipo);
+// atualizar usuario
+usuarioRouter.put("/:id",usuario.update);
 
-    // buscar cliente por cpf
-    router.get("/cliente-cpf/:cpf",usuario.findClienteByCpf);
- 
-    //Listar Funcionarios
-    router.get("/funcionarios", usuario.findFuncionarios);
-    
-     //buscar funcionario por nome
-    router.get("/funcionario-nome/:nome",usuario.findFuncionarioByNomeAndTipo);
+//Listar Clientes
+usuarioRouter.get("/clientes", usuario.findClientes);
 
-    //Buscar Funcionario por Email
-    router.get("/funcionario-email/:email", usuario.findFuncionarioByEmail);
+//buscar cliente por nome
+usuarioRouter.get("/cliente-nome/:nome",usuario.findClienteByNomeAndTipo);
 
-    //Buscar Funcionario por CPF
-    router.get("/funcionario-cpf/:cpf", usuario.findFuncionarioByCpf);
+// buscar cliente por cpf
+usuarioRouter.get("/cliente-cpf/:cpf",usuario.findClienteByCpf);
 
-    //Buscar Cliente por Email
-    router.get("/cliente-email/:email", usuario.findClienteByEmail);/// concluido
+//Listar Funcionarios
+usuarioRouter.get("/funcionarios", usuario.findFuncionarios);
 
-     //Listar Funcionarios por telefone
-    router.get("/funcionariostelefone/:telefone", usuario.findFuncByPhone);
+    //buscar funcionario por nome
+usuarioRouter.get("/funcionario-nome/:nome",usuario.findFuncionarioByNomeAndTipo);
 
-    //Deletar usuario por id
-    router.delete("/:id", usuario.deleteUsuario);
+//Buscar Funcionario por Email
+usuarioRouter.get("/funcionario-email/:email", usuario.findFuncionarioByEmail);
 
-    //Buscar Cliente por telefone
-    router.get("/cliente-telefone/:telefone", usuario.findClienteByTelefone);
-    
-    app.use('/api/usuario', router)
+//Buscar Funcionario por CPF
+usuarioRouter.get("/funcionario-cpf/:cpf", usuario.findFuncionarioByCpf);
+
+//Buscar Cliente por Email
+usuarioRouter.get("/cliente-email/:email", usuario.findClienteByEmail);/// concluido
+
+    //Listar Funcionarios por telefone
+usuarioRouter.get("/funcionariostelefone/:telefone", usuario.findFuncByPhone);
+
+//Deletar usuario por id
+usuarioRouter.delete("/:id", usuario.deleteUsuario);
+
+//Buscar Cliente por telefone
+usuarioRouter.get("/cliente-telefone/:telefone", usuario.findClienteByTelefone);
+
+module.exports = {
+    usuarioRouter
 }

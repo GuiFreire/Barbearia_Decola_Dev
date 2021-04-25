@@ -8,6 +8,7 @@ const create = async (usuario) => {
 
     return data;
 };
+
 const updateUser = async (usuario, id) => {
     const data = await Usuario.update(usuario, {
         where: {id : id}
@@ -56,7 +57,6 @@ const findFuncByPhone = async (telefone)  => {
     return data;
 };
 
-
 const findUsuarioById = async (id) => {
   const data = await Usuario.findOne({
     where: {id}
@@ -101,7 +101,6 @@ const findClienteByTelefone = async (telefone) => {
     return data;
 };
 
-
 const deleteUsuario = async (id) => {
   const data = await Usuario.destroy({
     where: {id : id}
@@ -126,7 +125,6 @@ const findClienteByNomeAndTipo = async(nome) =>{
       
   return data;
 }
-
                                        
 const findClienteByCpf =  async (cpf) => {
     const data = await Usuario.findOne({
@@ -148,8 +146,20 @@ const findFuncionarioByNomeAndTipo = async(nome) =>{
             ]
         }
     });
-    return data
+
+    return data;
 };
+
+const findUsuarioByEmail = async (email, tipo) => {
+    const data = await Usuario.findOne({
+        where: {
+            email,
+            tipo
+        }
+    });
+
+    return data;
+}
 
 module.exports = {
     create,
@@ -168,4 +178,5 @@ module.exports = {
     findClienteByCpf,
     findFuncionarioByNomeAndTipo,
     updateUser,
+    findUsuarioByEmail
 }
