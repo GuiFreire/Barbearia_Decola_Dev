@@ -57,10 +57,10 @@ const update = async (req, res) => {
 
     try {
         
-        const usuarioAtualizado = await usuarioRepository.updateByNomeAndTipo(req.body, nome,tipo);
+        const usuarioRetorno = await usuarioRepository.updateByNomeAndTipo(req.body, nome,tipo);
 
         //Verificando se o serviço foi atualizad
-        if (usuarioAtualizado == 1) {
+        if (usuarioRetorno == 1) {
             res.send({
                 message: "Usuario atualizado com sucesso"
             });
