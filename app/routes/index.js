@@ -10,7 +10,7 @@ const authMiddleware = require('../middlewares/auth');
 
 const routes = Router();
 
-routes.use(authMiddleware);
+//routes.use(authMiddleware);
 
 routes.use('/api/agendamento', agendamentoRouter);
 routes.use('/api/atendimento', atendimentoRouter);
