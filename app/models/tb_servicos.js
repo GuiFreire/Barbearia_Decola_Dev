@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   tb_servicos.init({
     nome: DataTypes.STRING,
     descricao: DataTypes.STRING,
-    valor: DataTypes.FLOAT
+    valor: DataTypes.FLOAT,
+    url: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'tb_servicos',

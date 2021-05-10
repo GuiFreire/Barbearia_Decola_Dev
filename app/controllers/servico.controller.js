@@ -1,7 +1,7 @@
 const servicoRepository = require('../repository/servico.repository');
 
 const create = async (req, res) => {
-    const {nome , descricao, valor} = req.body
+    const {nome , descricao, valor, url} = req.body
 
     if (!nome || !descricao || !valor) {
         res.status(400).send({
@@ -24,6 +24,7 @@ const create = async (req, res) => {
             nome,
             descricao,
             valor,
+            url: url ? url : "https://i.imgur.com/v5V6pLd.png"
         };
         
         const data = await servicoRepository.create(servico);
