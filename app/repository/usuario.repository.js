@@ -150,11 +150,10 @@ const findFuncionarioByNomeAndTipo = async(nome) =>{
     return data;
 };
 
-const findUsuarioByEmail = async (email, tipo) => {
+const findUsuarioByEmail = async (email) => {
     const data = await Usuario.findOne({
         where: {
-            email,
-            tipo
+            email
         }
     });
 

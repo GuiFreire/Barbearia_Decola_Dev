@@ -27,7 +27,7 @@ const create = async (req, res) => {
         const produtoCriado = await produtoRepository.create({
             nome,
             descricao,
-            url
+            url: url ? url : "https://imgur.com/v5V6pLd"
         });
 
         res.status(201).send(produtoCriado);

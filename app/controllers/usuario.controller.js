@@ -33,7 +33,7 @@ const create = async (req, res) => {
             telefone,
             senha,
             tipo,
-            url
+            url: url ? url : "https://i.imgur.com/SduiA8z.png"
         });
 
         res.status(201).send(usuarioCriado);
