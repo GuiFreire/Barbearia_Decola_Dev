@@ -33,6 +33,8 @@ main {
 
 .nao-tem-conta .frase {
     padding-right: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .cadastrar {
