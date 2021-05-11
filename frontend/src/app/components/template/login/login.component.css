@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+
+:root {
+    --bolg-gray: #464646;
+    --background-white: #F4F4F4;
+    --orange-button: #D48337;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    font-family: 'Montserrat';
+}
+
+.image {
+    background: url('../../../../assets/img/risquinho_bala.png');
+    background-size: cover;
+}
+
+.image,
+.login {
+    width: 50%;
+}
+
+.nao-tem-conta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 15px;
+    font-weight: 100;
+    font-size: 18px;
+}
+
+.nao-tem-conta .frase {
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.cadastrar {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    width: 100%;
+    padding: 8px 30px;
+    background-color: var(--bolg-gray);
+    border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
+    color: white;
+    transition: all 0.5s;
+}
+
+.cadastrar:hover {
+    background-color: #202020;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formularioLogin {
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.formularioLogin .mensagem {
+    font-size: 40px;
+}
+
+.formularioLogin input {
+    flex-direction: column;
+    background-color: #E5E5E5;
+    border: solid 1px #E5E5E5;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+::-webkit-input-placeholder {
+    color: black;
+}
+
+.bt-login {
+    display: flex;
+    justify-content: center;
+}
+
+.botao-enviar {
+    width: 40%;
+    height: 50px;
+    padding: 8px 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--orange-button);
+    color: black;
+    transition: all 0.5s;
+    box-shadow: 0px 5px 6px rgb(0 0 0 / 30%);
+}
+
+.botao-enviar:hover {
+    background-color: #ff9e43;
+}
