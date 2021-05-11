@@ -1,0 +1,21 @@
+:root {
+    --bolg-gray: #464646;
+    --background-white: #F4F4F4;
+    --orange-button: #D48337;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--bolg-gray);
+    color: white;
+}
+
+button {
+    cursor: pointer;
+}
