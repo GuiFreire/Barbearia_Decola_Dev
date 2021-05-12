@@ -14,7 +14,10 @@ import { ContatoComponent } from './components/template/contato/contato.componen
 @NgModule({
   declarations: [
     AppComponent,
-    PerfilEditarComponent
+    PerfilEditarComponent,
+    CadastroComponent,
+    LoginComponent,
+    ContatoComponent  
   ],
   imports: [
     BrowserModule,
@@ -22,9 +25,6 @@ import { ContatoComponent } from './components/template/contato/contato.componen
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    CadastroComponent,
-    LoginComponent,
-    ContatoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

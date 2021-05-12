@@ -10,7 +10,7 @@ main {
     color: black;
     background-color: var(--background-white);
     display: flex;
-    height: 100vh;
+    height: 100%;
     font-family: 'Montserrat';
 }
 

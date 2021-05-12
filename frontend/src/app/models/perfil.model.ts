@@ -6,5 +6,5 @@ export class Perfil {
     email?: string;
     telefone?: string;
     url?: string;
-
+    senha?: string
 }

@@ -7,12 +7,9 @@ import { PerfilService } from 'src/app/services/perfil.service';
   templateUrl: './perfil-editar.component.html',
   styleUrls: ['./perfil-editar.component.css']
 })
-//export class PerfilEditarComponent implements OnInit {
-
-// constructor() { }
 
 export class PerfilEditarComponent implements OnInit {
-  service: Perfil = {
+  perfil: Perfil = {
     nome: '',
     cpf: '',
     email: '',

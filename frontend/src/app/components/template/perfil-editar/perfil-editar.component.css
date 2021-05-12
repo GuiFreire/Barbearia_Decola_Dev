@@ -5,7 +5,12 @@
     background-color: #f4f4f4
 }
 
+main {
+    color: black
+}
+
 .topo {
+    color: black;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -18,6 +23,10 @@
 .submit-form {
     max-width: 400px;
     margin: auto;
+}
+
+.submit-form input {
+    background-color: #d8d7d7;
 }
 
 .topo .img-down {
