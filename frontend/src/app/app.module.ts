@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/template/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ContatoComponent } from './components/template/contato/contato.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
