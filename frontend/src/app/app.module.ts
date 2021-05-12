@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PerfilEditarComponent } from './components/template/perfil-editar/perfil-editar.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './components/template/cadastro/cadastro.component';
 import { LoginComponent } from './components/template/login/login.component';
 import { ContatoComponent } from './components/template/contato/contato.component';
@@ -10,17 +14,20 @@ import { ContatoComponent } from './components/template/contato/contato.componen
 @NgModule({
   declarations: [
     AppComponent,
-    CadastroComponent,
-    LoginComponent,
-    ContatoComponent
+    PerfilEditarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    CadastroComponent,
+    LoginComponent,
+    ContatoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 
 export class AppModule { }
-

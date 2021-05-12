@@ -157,8 +157,8 @@ const findByFuncionarioName = async (nome) => {
                 model: Usuario,
                 as: 'funcionarioAgendamento',
                 where: {
-                  nome: nome,
-                  tipo: 2
+                    nome: nome,
+                     tipo: 2
                 },
                 attributes: ['id', 'nome']
             },
