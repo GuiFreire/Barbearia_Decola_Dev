@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { PerfilEditarComponent } from './components/perfil-editar/perfil-editar.component';
+import { PerfilEditarComponent } from './components/template/perfil-editar/perfil-editar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'perfis', pathMatch: 'full' },
