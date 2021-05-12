@@ -68,6 +68,10 @@ h2 {
 
 }
 
+.button-editar:hover {
+    background-color: #505050;
+}
+
 .editar {
     display: flex;
     align-items: center;

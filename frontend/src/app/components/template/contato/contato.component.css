@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 
 :root {
     --bolg-gray: #464646;
@@ -7,26 +8,40 @@
 }
 
 header {
+    width: 100%;
     display: flex;
-    background-color: var(--bolg-gray);
     justify-content: space-between;
     align-items: center;
     font-family: 'Montserrat';
 }
 
-header nav ul {
+main header nav ul {
     list-style: none;
 }
 
-header nav ul li {
+main header nav ul li {
     display: inline-block;
     padding: 10px;
 }
 
-header nav ul li a {
+main header nav ul li a {
     text-decoration: none;
     color: #fff;
+    font-weight: 300;
     text-transform: uppercase;
+}
+
+header nav ul li a:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    transition: 0.5s;
+}
+
+header nav ul li:hover a:after {
+    width: 100%;
 }
 
 a {
@@ -34,21 +49,23 @@ a {
 }
 
 main {
-    background-color: var(--bolg-gray);
+    background: url('../../../../assets/img/barbearia.jpg');
     color: white;
     display: flex;
-    height: 85vh;
+    height: 100vh;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Montserrat';
 }
 
 .formularioContato {
-    width: 100%;
-    height: 100%;
-}
+    height: 80%;
+    width: 80%;
+}   
 
 .formularioContato form {
+    padding-bottom: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -56,8 +73,31 @@ main {
     justify-content: center;
 }
 
+.formularioContato input,
+.formularioContato textarea {
+    border-radius: 4px;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    border: solid 1px #E5E5E5;
+    height: 25px;
+    width: 100%;
+}
+
+.formularioContato textarea {
+    height: 80px;
+}
+
 .formularioContato div {
-    padding-top: 15px;
+    padding-top: 30px;
+    width: 50%;
+}
+
+.formularioContato .mensagem {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Pirata One';
+    font-size: 40px;
 }
 
 ::-webkit-input-placeholder {
@@ -88,7 +128,6 @@ main {
 
 
 footer {
-    background-color: var(--bolg-gray);
     display: flex;
     justify-content: center;
 }
