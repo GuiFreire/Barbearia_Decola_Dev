@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+
+:root {
+    --bolg-gray: #464646;
+    --background-white: #F4F4F4;
+    --orange-button: #D48337;
+}
+
+header {
+    display: flex;
+    background-color: var(--bolg-gray);
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat';
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    background-color: var(--bolg-gray);
+    color: white;
+    display: flex;
+    height: 100vh;
+    font-family: 'Montserrat';
+}
+
+.formularioContato form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    background-color: var(--bolg-gray);
+}
