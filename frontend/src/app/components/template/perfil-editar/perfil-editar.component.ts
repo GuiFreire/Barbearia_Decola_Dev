@@ -12,6 +12,7 @@ export class PerfilEditarComponent implements OnInit {
   perfil: Perfil = {
     nome: '',
     cpf: '',
+    senha: '',
     email: '',
     telefone: '',
     url: '',
