@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfilEditarComponent } from './components/template/perfil-editar/perfil-editar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CadastroComponent } from './components/template/cadastro/cadastro.component';
+import { LoginComponent } from './components/template/login/login.component';
+import { ContatoComponent } from './components/template/contato/contato.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CadastroComponent,
+    LoginComponent,
+    ContatoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

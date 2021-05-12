@@ -1,0 +1,45 @@
+<header>
+    <div class="logo">
+        <a routerLink=''>
+            <img src="assets/img/LOGO.svg" alt="logo">
+        </a>
+    </div> 
+
+    <nav>
+        <ul>
+            <li><a routerLink=''>Agendamento</a></li>
+            <li><a routerLink='/login'>Login</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="formularioContato">
+        <form method="POST">
+            <div class="mensagem">
+                <p>Fale Conosco!</p>
+            </div>
+
+            <img src="assets/img/user.png" alt="user_icon">
+            <input type="text" name="nome" id="nome" placeholder="Nome" required>
+
+            <img src="assets/img/smartphone.png" alt="user_icon">
+            <input type="text" name="telefone" id="telefone" placeholder="Celular" required>
+
+            <img src="assets/img/mail.png" alt="user_icon">
+            <input type="email" name="email" id="email" placeholder="E-mail" required>
+
+            <img src="assets/img/clipboard.png" alt="user_icon">
+            <input type="password" name="senha" id="senha" placeholder="Assunto" required>
+
+            <img src="assets/img/message-square.png" alt="user_icon">            
+            <textarea name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>
+            
+            <div class="bt-submit">
+                <button class="botao-enviar" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+</main>
+<footer>
+    <p>Barbanade © todos os direitos reservados </p>
+</footer>
