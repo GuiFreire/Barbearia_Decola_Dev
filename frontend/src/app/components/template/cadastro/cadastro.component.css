@@ -2,21 +2,26 @@
 
 :root {
     --bolg-gray: #464646;
-    --background-white: #F4F4F4;
-    --orange-button: #D48337;
+    --background-white: #FFFFFF;
+    --orange-button: #0a0a0a;
 }
 
 main {
-    background-color: var(--bolg-gray);
-    color: white;
+    color: black;
+    background-color: var(--background-white);
     display: flex;
     height: 100vh;
     font-family: 'Montserrat';
 }
 
 .image {
-    background: url('../../../../assets/img/risquinho_bala.png');
+    background: url('../../../../assets/img/tesoura_fumaça 1.png');
     background-size: cover;
+}
+
+.image a {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .image,
@@ -29,7 +34,7 @@ main {
     justify-content: center;
     width: 100%;
     padding-top: 15px;
-    font-weight: 100;
+    font-weight: 50;
     font-size: 18px;
 }
 
@@ -44,7 +49,7 @@ main {
     font-weight: 300;
     width: 100%;
     padding: 8px 30px;
-    background-color: var(--bolg-gray);
+    background-color: #202020;
     border-radius: 5px;
     border-color: white;
     border-width: 1px;
@@ -53,7 +58,7 @@ main {
 }
 
 .cadastrar:hover {
-    background-color: #202020;
+    background-color: #505050;
 }
 
 .login {
@@ -64,21 +69,25 @@ main {
 }
 
 .formularioLogin {
-    height: 400px;
+    height: 700px;
     display: flex;
     align-items: center;
 }
 
 .formularioLogin .mensagem {
     font-size: 40px;
+    display: flex;
+    justify-content: center;
 }
+
 
 .formularioLogin input {
     flex-direction: column;
     background-color: #E5E5E5;
     border: solid 1px #E5E5E5;
     padding: 10px;
-    width: 100%;
+    width: 90%;
+    height: 10px;
     margin-bottom: 30px;
 }
 
@@ -97,12 +106,17 @@ main {
     padding: 8px 30px;
     border-radius: 5px;
     border: none;
-    background-color: var(--orange-button);
-    color: black;
+    background-color: #080808;
+    color: rgb(243, 234, 234);
     transition: all 0.5s;
     box-shadow: 0px 5px 6px rgb(0 0 0 / 30%);
 }
 
 .botao-enviar:hover {
-    background-color: #ff9e43;
+    background-color: #505050;
+}
+
+footer p {
+    margin: 0px;
+    margin-top: 10px;
 }
