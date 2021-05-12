@@ -19,11 +19,11 @@
                     <p> Bem-vindo de volta!</p>
                 </div>
         
-                <input type="email" name="email" id="email" placeholder="E-mail" required>
-                <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                <input type="email" name="email" id="email" [(ngModel)]="login.email" placeholder="E-mail" required>
+                <input type="password" name="senha" id="senha" [(ngModel)]="login.senha" placeholder="Senha" required>
         
                 <div class="bt-login">
-                    <button class="botao-enviar" type="submit">Entrar</button>
+                    <button (click)="saveLogin()" class="botao-enviar" type="submit">Entrar</button>
                 </div>
             </form>
         </div>
