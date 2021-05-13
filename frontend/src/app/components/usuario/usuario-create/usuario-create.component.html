@@ -1,0 +1,88 @@
+<header>
+    <mat-toolbar class="header mat-elevation-z4">
+        <span>
+            <a routerLink="/">
+                <img class ="logo" src="assets/img/logo.png" alt="logo">
+            </a>
+        </span>
+        
+    </mat-toolbar>
+</header>
+
+<mat-sidenav-container class="conteiner">
+    <mat-sidenav class = "sidenav" mode="side" opened 
+    fixedInViewport="true" fixedTopGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/usuario/read">                 
+                    Usuários
+            </a>
+            <a mat-list-item routerLink="/home-funcionario">
+                    Agendamento
+            </a>
+            <a mat-list-item routerLink="/perfil">
+                    Perfil
+            </a>
+            <a mat-list-item routerLink="">
+                    Serviços
+             </a>
+             <a mat-list-item routerLink="/produto/read">
+                    Produto 
+             </a>
+             <a mat-list-item routerLink="">
+                    Atendimento
+             </a>
+             <a mat-list-item routerLink="">
+                    Sair
+             </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>      
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<div class="tela">
+    <mat-card>
+        <mat-card-title>Novo Usuário</mat-card-title>
+        <form>
+            <mat-form-field>
+                <input matInput placeholder = "Nome"
+                [(ngModel)]="usuario.nome" name="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "CPF"
+                [(ngModel)]="usuario.cpf" name="cpf">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "E-mail"
+                [(ngModel)]="usuario.email" name="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Telefone"
+                [(ngModel)]="usuario.telefone" name="telefone">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Tipo"
+                [(ngModel)]="usuario.tipo" name="tipo">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Senha"
+                [(ngModel)]="usuario.senha" name="senha">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "URL"
+                [(ngModel)]="usuario.url" name="url">
+            </mat-form-field>
+        </form>
+     
+        <button mat-raised-button (click)= "createUsuario()">
+            Salvar
+        </button>
+
+        <button mat-raised-button (click)= "cancel()" >
+            Cancelar
+        </button>
+    </mat-card>
+</div>

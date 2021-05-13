@@ -3,7 +3,7 @@ const produtoRepository = require("../repository/produtos.repository");
 const create = async (req, res) => {
     const { nome, descricao, url } = req.body;
 
-    if (!nome || !descricao || !url) {
+    if (!nome || !descricao) {
         res.status(400).send({
             message: "Missing required value"
         });
@@ -27,7 +27,7 @@ const create = async (req, res) => {
         const produtoCriado = await produtoRepository.create({
             nome,
             descricao,
-            url
+            url: url ? url : "https://i.imgur.com/v5V6pLd.png"
         });
 
         res.status(201).send(produtoCriado);

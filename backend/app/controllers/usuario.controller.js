@@ -6,7 +6,7 @@ const agendamentoRepository = require("../repository/agendamento.repository");
 const create = async (req, res) => {
     const { nome, cpf, email, telefone, senha, tipo, url } = req.body;
 
-    if (!nome || !cpf || !email || !telefone || !senha || !tipo) {
+    if (!nome || !cpf || !email || !telefone || !senha) {
         res.status(400).send({
             message: "Missing required value"
         });
@@ -32,8 +32,8 @@ const create = async (req, res) => {
             email,
             telefone,
             senha,
-            tipo,
-            url
+            tipo: tipo ? tipo : 1,
+            url: url ? url : "https://i.imgur.com/SduiA8z.png"
         });
 
         res.status(201).send(usuarioCriado);
@@ -96,6 +96,26 @@ const findClienteByNomeAndTipo = async(req,res) =>{
             res.status(500).send(error);
         }
 };
+
+const findUserById = async (req, res) => {
+    const id = req.params.id
+
+    try {
+        const usuario = await usuarioRepository.findUserById(id);
+
+        if(!usuario) {
+            res.status(400).send({
+                message: 'Usuário não encontrado'
+            });
+
+            return;
+        };
+
+        res.send(usuario);
+    } catch(error){
+        res.status(500).send(error)
+    }
+}
 
 const findClienteByCpf= async (req,res)=>{
     const cpf = req.params.cpf;
@@ -307,5 +327,6 @@ module.exports = {
     findFuncionarioByNomeAndTipo,
     findClienteByCpf,
     update,
-    create
+    create,
+    findUserById
 }

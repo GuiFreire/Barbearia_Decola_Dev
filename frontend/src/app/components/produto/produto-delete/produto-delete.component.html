@@ -1,0 +1,73 @@
+<header>
+    <mat-toolbar class="header mat-elevation-z4">
+        <span>
+            <a routerLink="/">
+                <img class ="logo" src="assets/img/logo.png" alt="logo">
+            </a>
+        </span>
+        
+    </mat-toolbar>
+</header>
+
+<mat-sidenav-container class="conteiner">
+    <mat-sidenav class = "sidenav" mode="side" opened 
+    fixedInViewport="true" fixedTopGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/usuario/read">                 
+                    Usuários
+            </a>
+            <a mat-list-item routerLink="/home-funcionario">
+                    Agendamento
+            </a>
+            <a mat-list-item routerLink="/perfil">
+                    Perfil
+            </a>
+            <a mat-list-item routerLink="">
+                    Serviços
+             </a>
+             <a mat-list-item routerLink="/produto/read">
+                    Produto 
+             </a>
+             <a mat-list-item routerLink="">
+                    Atendimento
+             </a>
+             <a mat-list-item routerLink="">
+                    Sair
+             </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>      
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<div class="tela">
+    <mat-card>
+        <mat-card-title>Deletar Produto</mat-card-title>
+        <form>
+            <mat-form-field>
+                <input matInput placeholder = "Nome"
+                [(ngModel)]="produto.nome" name="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Descrição"
+                [(ngModel)]="produto.descricao"  name="descricao">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "URL"
+                [(ngModel)]="produto.url" name="url">
+            </mat-form-field>
+           
+        </form>
+     
+        <button mat-raised-button (click)= "deleteProduto()">
+            Deletar
+        </button>
+
+        <button mat-raised-button (click)= "cancel()" >
+            Cancelar
+        </button>
+    </mat-card>
+</div>

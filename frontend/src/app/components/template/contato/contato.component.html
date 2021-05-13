@@ -1,0 +1,49 @@
+<main>
+    <header>
+        <div class="logo">
+            <a routerLink=''>
+                <img src="assets/img/LOGO.svg" alt="logo">
+            </a>
+        </div> 
+    
+        <nav>
+            <ul>
+                <li><a routerLink=''>Agendamento</a></li>
+                <li><a routerLink='/login'>Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="formularioContato">
+        <form method="POST">
+            <div class="mensagem">
+                <p>Fale Conosco!</p>
+            </div>
+            <div>
+                <input [(ngModel)]="contato.nome" type="text" name="nome" id="nome" placeholder="Nome" required>
+            </div>
+
+            <div>
+                <input [(ngModel)]="contato.celular" type="text" name="celular" id="celular" placeholder="Celular" required>
+            </div>
+
+            <div>
+                <input [(ngModel)]="contato.email" type="email" name="email" id="email" placeholder="E-mail" required>
+            </div>
+
+            <div>
+                <input [(ngModel)]="contato.assunto" type="text" name="assunto" id="assunto" placeholder="Assunto" required>
+            </div>
+
+            <div>        
+                <textarea [(ngModel)]="contato.mensagem" name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>   
+            </div>
+            
+            <div class="bt-submit">
+                <button class="botao-enviar" type="submit" (click)="createContato()">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <p>Barbanade © todos os direitos reservados </p>
+    </footer>
+</main>

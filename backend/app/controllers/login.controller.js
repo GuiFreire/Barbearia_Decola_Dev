@@ -3,9 +3,9 @@ const authConfig = require('../config/auth');
 const { sign } = require('jsonwebtoken');
 
 const createSession = async (req, res) => {
-    const { email, senha, tipo } = req.body;
+    const { email, senha} = req.body;
 
-    const usuario = await usuarioRepository.findUsuarioByEmail(email, tipo);
+    const usuario = await usuarioRepository.findUsuarioByEmail(email);
 
     if (!usuario) {
         res.status(404).json({ message: 'Usuário não encontrado.'});

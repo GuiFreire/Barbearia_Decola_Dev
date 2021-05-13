@@ -17,6 +17,9 @@ module.exports = {
       valor: {
         type: Sequelize.FLOAT
       },
+      url: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

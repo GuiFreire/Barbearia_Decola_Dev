@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
+:root {
+    --bolg-gray: #464646;
+    --background-white: #F4F4F4;
+    --orange-button: #D48337;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat';
+}
+
+main header nav ul {
+    list-style: none;
+}
+
+main header nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+main header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+header nav ul li a:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    transition: 0.5s;
+}
+
+header nav ul li:hover a:after {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    background: url('../../../../assets/img/barbearia.jpg');
+    color: white;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+}
+
+.formularioContato {
+    height: 80%;
+    width: 80%;
+}   
+
+.formularioContato form {
+    padding-bottom: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formularioContato input,
+.formularioContato textarea {
+    border-radius: 4px;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    border: solid 1px #E5E5E5;
+    height: 25px;
+    width: 100%;
+}
+
+.formularioContato textarea {
+    height: 80px;
+}
+
+.formularioContato div {
+    padding-top: 30px;
+    width: 50%;
+}
+
+.formularioContato .mensagem {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Pirata One';
+    font-size: 40px;
+}
+
+::-webkit-input-placeholder {
+    color: black;
+}
+
+.bt-submit {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.botao-enviar {
+    width: 100%;
+    height: 50px;
+    padding: 8px 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--orange-button);
+    color: black;
+    transition: all 0.5s;
+    box-shadow: 0px 5px 6px rgb(0 0 0 / 30%);
+}
+
+.botao-enviar:hover {
+    background-color: #ff9e43;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+}
