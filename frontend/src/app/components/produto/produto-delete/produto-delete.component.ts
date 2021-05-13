@@ -9,7 +9,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./produto-delete.component.css"],
 })
 export class ProdutoDeleteComponent implements OnInit {
-  produto: Produto;
+  produto: Produto = {
+    nome: "", descricao: "", url: ""
+  };
 
   constructor(
     private produtoService: ProdutoService,
@@ -19,17 +21,20 @@ export class ProdutoDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.produtoService.readById(id).subscribe((produto) => {
-      this.produto = produto;
-      console.log(produto)
-    });
+    if (id) {
+      this.produtoService.readById(id).subscribe((produto) => {
+        this.produto = produto;
+      });
+    }
   }
 
   deleteProduto(): void {
-    this.produtoService.delete(this.produto.id).subscribe(() => {
-      this.produtoService.showMessage("Produto excluído com sucesso!");
-      this.router.navigate(["/produto/read"]);
-    });
+    if (this.produto && this.produto.id) {
+      this.produtoService.delete(this.produto.id).subscribe(() => {
+        this.produtoService.showMessage("Produto excluído com sucesso!");
+        this.router.navigate(["/produto/read"]);
+      });
+    }
   }
 
   cancel(): void {

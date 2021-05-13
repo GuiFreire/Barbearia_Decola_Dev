@@ -20,7 +20,6 @@ export class CadastroComponent implements OnInit {
     telefone: '',
     senha: '',
     url: '',
-    tipo: null
   }
 
   ngOnInit(): void {
@@ -28,6 +27,7 @@ export class CadastroComponent implements OnInit {
 
   createCadastro(): void {
     this.cadastroService.create(this.cadastro).subscribe(() => {
+      this.cadastroService.showMessage('Cadastro criado com sucesso!')
       this.router.navigate(['/login'])
     })
   }

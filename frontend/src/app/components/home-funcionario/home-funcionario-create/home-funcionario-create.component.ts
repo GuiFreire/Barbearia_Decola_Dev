@@ -10,13 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeFuncionarioCreateComponent implements OnInit {
 
-  agendamento: Agendamento = {
-    data: null,
-    id_cliente: null,
-    id_funcionario: null,
-    id_servico: null
-
-  }
+  agendamento: Agendamento = {}
 
   constructor(private agendamentoService: AgendamentoService,
     private router: Router) { }

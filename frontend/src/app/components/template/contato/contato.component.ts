@@ -25,7 +25,8 @@ export class ContatoComponent implements OnInit {
 
   createContato(): void {
     this.contatoService.create(this.contato).subscribe(() => {
-      this.router.navigate(['/contato'])
+      this.contatoService.showMessage('Contato enviado com sucesso!')
+      this.router.navigate([''])
     })
   }
 

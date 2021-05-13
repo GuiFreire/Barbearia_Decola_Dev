@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class ProdutoReadComponent implements OnInit {
 
-  produtos: Produto[]
-  displayedColumns = ['id', 'nome', 'descricao', 'url', 'action']
+  produtos: Produto[] = [];
+
+  displayedColumns = ['id', 'nome', 'descricao', 'url', 'action'];
 
   constructor(private produtoService: ProdutoService, private router: Router) { }
 
@@ -19,7 +20,6 @@ export class ProdutoReadComponent implements OnInit {
   ngOnInit(): void {
     this.produtoService.read().subscribe(produtos => {
       this.produtos = produtos
-      console.log(produtos)
     })
   }
 

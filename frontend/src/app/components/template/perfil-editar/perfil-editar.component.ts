@@ -17,8 +17,8 @@ export class PerfilEditarComponent implements OnInit {
     telefone: '',
     senha: '',
     url: '',
-    tipo: null
   }
+
   constructor(
     private perfilEditarService: PerfilEditarService,
     private route: ActivatedRoute,
@@ -34,7 +34,6 @@ export class PerfilEditarComponent implements OnInit {
       .subscribe(
         data => {
           this.currentPerfil = data;
-          console.log(data);
         },
         error => {
           console.log(error);

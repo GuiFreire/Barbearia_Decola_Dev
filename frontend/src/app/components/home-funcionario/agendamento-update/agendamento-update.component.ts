@@ -9,18 +9,23 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './agendamento-update.component.html',
   styleUrls: ['./agendamento-update.component.css']
 })
+
 export class AgendamentoUpdateComponent implements OnInit {
 
-  agendamento: Agendamento
+  agendamento: Agendamento = {};
+
   constructor(private agendamentoService: AgendamentoService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.agendamentoService.readById(id).subscribe(agendamento => {
-      this.agendamento = agendamento;
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.agendamentoService.readById(id).subscribe(agendamento => {
+        this.agendamento = agendamento;
+      });
+    }
   }
 
   updateAgendamento(): void {

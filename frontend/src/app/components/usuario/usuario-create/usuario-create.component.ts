@@ -17,9 +17,8 @@ export class UsuarioCreateComponent implements OnInit {
     email: '',
     telefone: '',
     senha: '',
-    tipo: null,
     url: '',
-
+    tipo: 0
   }
 
   constructor(private usuarioService: UsuarioService,

@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class HomeFuncionarioReadComponent implements OnInit {
 
-  agendamentos: Agendamento[]
+  agendamentos: Agendamento[] = [];
+  
   displayedColumns = ['id', 'data', 'cliente', 'funcionario', 'servico']
 
   constructor(private agendamentoService: AgendamentoService, private router: Router) { }

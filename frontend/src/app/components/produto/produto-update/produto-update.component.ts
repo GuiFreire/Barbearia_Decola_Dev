@@ -9,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./produto-update.component.css"],
 })
 export class ProdutoUpdateComponent implements OnInit {
-  produto: Produto;
+  produto: Produto = { nome: "", descricao: "", url: "" };
 
   constructor(
     private produtoService: ProdutoService,
@@ -17,11 +17,13 @@ export class ProdutoUpdateComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.produtoService.readById(id).subscribe(produto => {
-      this.produto = produto;
-      console.log(produto)
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.produtoService.readById(id).subscribe(produto => {
+        this.produto = produto;
+      });
+    }
   }
 
   updateProduto(): void {

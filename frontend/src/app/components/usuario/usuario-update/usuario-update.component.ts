@@ -10,16 +10,28 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UsuarioUpdateComponent implements OnInit {
 
-  usuario: Usuario
+  usuario: Usuario = {
+    nome: '',
+    cpf: '',
+    email: '',
+    telefone: '',
+    senha: '',
+    url: '',
+    tipo: 0
+  }
+
   constructor(private usuarioService: UsuarioService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.usuarioService.readById(id).subscribe(usuario => {
-      this.usuario = usuario;
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.usuarioService.readById(id).subscribe(usuario => {
+        this.usuario = usuario;
+      });
+    }
   }
 
   updateUsuario(): void {

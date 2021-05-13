@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 
+a {
+    text-align: none;
+    color: white;
+}
+
 .principal {
     position: absolute;
     display: flex;
@@ -177,8 +182,14 @@
 }
 
 .footer {
+    background-color: #f4f4f4;
     font-size: 20px;
-    color: #6c757d;
+    color: black;
     text-align: center;
     padding: 30px;
+}
+
+.horarios ul li,
+.networks ul li {
+    color: black;
 }

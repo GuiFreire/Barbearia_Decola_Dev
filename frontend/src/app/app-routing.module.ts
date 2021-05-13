@@ -18,6 +18,7 @@ import { ProdutoUpdateComponent } from './components/produto/produto-update/prod
 import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
 import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
 import { HomeClienteReadComponent } from './components/home-cliente/home-cliente-read/home-cliente-read.component';
+import { HomeComponent } from './components/template/home/home.component';
 
 
 const routes: Routes = [
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: "produto/delete/:id",
     component: ProdutoDeleteComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
   },
   {
     path: 'login',
