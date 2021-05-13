@@ -6,7 +6,10 @@ const { Router } = require("express");
 const usuarioRouter = Router();
 
 // atualizar usuario
-usuarioRouter.put("/:id",usuario.update);
+usuarioRouter.put("/:id", usuario.update);
+
+//Buscar usuário por ID
+usuarioRouter.get('/:id', usuario.findUserById)
 
 //Listar Clientes
 usuarioRouter.get("/clientes", usuario.findClientes);

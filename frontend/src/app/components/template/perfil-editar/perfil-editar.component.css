@@ -6,7 +6,12 @@
     color: black;
 }
 
+main {
+    color: black
+}
+
 .topo {
+    color: black;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -19,6 +24,10 @@
 .submit-form {
     max-width: 400px;
     margin: auto;
+}
+
+.submit-form input {
+    background-color: #d8d7d7;
 }
 
 .topo .img-down {
@@ -58,6 +67,10 @@ h2 {
     transition: all 0.5s;
     box-shadow: 0px 5px 6px rgb(0 0 0 / 30%);
 
+}
+
+.button-editar:hover {
+    background-color: #505050;
 }
 
 .editar {

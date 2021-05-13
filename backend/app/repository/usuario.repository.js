@@ -41,6 +41,14 @@ const findUserByIdAndType = async (id, tipo) => {
     return data;
 };
 
+const findUserById = async (id) => {
+    const data = await Usuario.findOne({
+        where: {id}
+    });
+
+    return data;
+}
+
 const findUserByEmailOrCpfOrPhone = async (email, cpf, telefone) => {
     const data = await Usuario.findOne({
         where:{[Op.or]: [{ email: email }, { cpf: cpf }, {telefone: telefone }]} 
@@ -177,5 +185,6 @@ module.exports = {
     findClienteByCpf,
     findFuncionarioByNomeAndTipo,
     updateUser,
-    findUsuarioByEmail
+    findUsuarioByEmail,
+    findUserById
 }

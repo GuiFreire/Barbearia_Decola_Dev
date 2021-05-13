@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Avanade1401!",
-    "database": "db_projeto_pi",
+    "password": "Gn@291218",
+    "database": "db_pi",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
