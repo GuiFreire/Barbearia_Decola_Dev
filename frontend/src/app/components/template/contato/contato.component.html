@@ -19,27 +19,27 @@
                 <p>Fale Conosco!</p>
             </div>
             <div>
-                <input type="text" name="nome" id="nome" placeholder="Nome" required>
+                <input [(ngModel)]="contato.nome" type="text" name="nome" id="nome" placeholder="Nome" required>
             </div>
 
             <div>
-                <input type="text" name="telefone" id="telefone" placeholder="Celular" required>
+                <input [(ngModel)]="contato.celular" type="text" name="celular" id="celular" placeholder="Celular" required>
             </div>
 
             <div>
-                <input type="email" name="email" id="email" placeholder="E-mail" required>
+                <input [(ngModel)]="contato.email" type="email" name="email" id="email" placeholder="E-mail" required>
             </div>
 
             <div>
-                <input type="password" name="senha" id="senha" placeholder="Assunto" required>
+                <input [(ngModel)]="contato.assunto" type="text" name="assunto" id="assunto" placeholder="Assunto" required>
             </div>
 
             <div>        
-                <textarea name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>   
+                <textarea [(ngModel)]="contato.mensagem" name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>   
             </div>
             
             <div class="bt-submit">
-                <button class="botao-enviar" type="submit">Enviar</button>
+                <button class="botao-enviar" type="submit" (click)="createContato()">Enviar</button>
             </div>
         </form>
     </div>

@@ -19,8 +19,7 @@
                 <img src="assets/ed.jpg" class="img-destaque" alt="IMAGEM MAIN">
           </div>
     <div class="submit-form">
-      <div *ngIf="!submitted">
-         
+      <div>
        
         <div class="form-group">
           <label for="nome">Nome</label>
@@ -29,7 +28,7 @@
             class="form-control"
             id="nome"
             required
-            [(ngModel)]="perfil.nome"
+            [(ngModel)]="currentPerfil.nome"
             name="nome"
           />
         </div>
@@ -40,7 +39,7 @@
             class="form-control"
             id="cpf"
             required
-            [(ngModel)]="perfil.cpf"
+            [(ngModel)]="currentPerfil.cpf"
             name="cpf"
           />
         </div>
@@ -51,7 +50,7 @@
               class="form-control"
               id="telefone"
               required
-              [(ngModel)]="perfil.telefone"
+              [(ngModel)]="currentPerfil.telefone"
               name="telefone"
             />
           </div>
@@ -62,7 +61,7 @@
               class="form-control"
               id="email"
               required
-              [(ngModel)]="perfil.email"
+              [(ngModel)]="currentPerfil.email"
               name="email"
             />
           </div>
@@ -72,7 +71,7 @@
               class="form-control"
               id="senha"
               required
-              [(ngModel)]="perfil.senha"
+              [(ngModel)]="currentPerfil.senha"
               name="senha"
             />
           </div>
@@ -82,18 +81,18 @@
               class="form-control"
               id="url"
               required
-              [(ngModel)]="perfil.url"
+              [(ngModel)]="currentPerfil.url"
               name="url"
             />
           </div>
           <div class="editar">
-            <button  class="button-editar">editar</button>
+            <button class="button-editar" (click)="updatePerfil()">editar</button>
           </div>
         
     </div>
 
     <div class="footer">
-      <p>Barbanade@ todos os direitos reservados<p>
+      <p>Barbanade @ todos os direitos reservados<p>
     </div>
   </div>
 </div>
