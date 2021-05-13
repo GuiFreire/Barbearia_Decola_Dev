@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+.principal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 1000px;
+    position: relative;
+    background-image: url("../../../../assets/img/background.png");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    margin: 0 0 0 0;
+}
+
+.principal .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.principal .nav .logo {
+    padding: 10px;
+    display: flex;
+    justify-self: flex-start;
+}
+
+.principal .nav .menu {
+    color: #fff;
+}
+
+
+.principal .nav .menu a {
+    font-size: 20px;
+    padding: 15px;
+    margin-right: 30px;
+}
+
+.principal .photo-text {
+    display: flex;
+    align-items: center;
+    width: 100px;
+
+}
+
+.sobre {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sobre .img {
+    width: 50%;
+    background-image: url("../../../../assets/img/sobrenos.png");
+    background-size: cover;
+}
+
+.sobre .sobreNos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre .sobreNos p {
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    max-width: 600px;
+    font-size: 25px;
+    line-height: 30px;
+
+}
+
+.equipe,
+.servicos,
+.produtos {
+    background-color: #f4f4f4;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.produtos {
+    height: 300px;
+}
+
+.container {
+    width: 1000px;
+    height: 500px;
+
+}
+
+.sobreNos,
+.servicos,
+.localizacao {
+    background: #464646;
+}
+
+.sobre .sobreNos h2 {
+    padding-top: 10px;
+}
+
+.sobre .sobreNos h2,
+.servicos h2,
+.equipe h2,
+.produtos h2,
+.localizacao h2 {
+    font-family: Italianno;
+    font-weight: 400;
+    color: #F2994A;
+    font-size: 60px;
+}
+
+
+
+.localizacao {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.localizacao iframe {
+    width: 1000px;
+    height: 500px;
+}
+
+.localizacao .titulo {
+    padding-top: 20px;
+}
+
+.contatos {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 35px;
+    background-color: #f4f4f4;
+}
+
+.contatos h2 {
+    font-family: Italianno;
+
+    font-size: 45px;
+    text-align: center;
+    color: #F2994A
+}
+
+.contatos ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contatos .networks ul {
+    padding-left: 0;
+}
+
+.contatos .networks ul li,
+.contatos .horarios ul li {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.contatos .networks ul li img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.footer {
+    font-size: 20px;
+    color: #6c757d;
+    text-align: center;
+    padding: 30px;
+}
