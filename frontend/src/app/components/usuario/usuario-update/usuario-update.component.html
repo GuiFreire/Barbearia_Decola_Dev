@@ -1,0 +1,89 @@
+<header>
+    <mat-toolbar class="header mat-elevation-z4">
+        <span>
+            <a routerLink="/">
+                <img class ="logo" src="assets/img/logo.png" alt="logo">
+            </a>
+        </span>
+        
+    </mat-toolbar>
+</header>
+
+<mat-sidenav-container class="conteiner">
+    <mat-sidenav class = "sidenav" mode="side" opened 
+    fixedInViewport="true" fixedTopGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/usuario/read">                 
+                    Usuários
+            </a>
+            <a mat-list-item routerLink="/home-funcionario">
+                    Agendamento
+            </a>
+            <a mat-list-item routerLink="/perfil">
+                    Perfil
+            </a>
+            <a mat-list-item routerLink="">
+                    Serviços
+             </a>
+             <a mat-list-item routerLink="/produto/read">
+                    Produto 
+             </a>
+             <a mat-list-item routerLink="">
+                    Atendimento
+             </a>
+             <a mat-list-item routerLink="">
+                    Sair
+             </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>      
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<div class="tela">
+    <mat-card>
+        <mat-card-title>Alterar Usuário</mat-card-title>
+        <form>
+            <mat-form-field>
+                <input matInput placeholder = "Nome"
+                name="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "CPF"
+                name="cpf">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "E-mail"
+                name="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Telefone"
+                name="telefone">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Tipo"
+                name="tipo">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "Senha"
+                name="senha">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder = "URL"
+                name="url">
+            </mat-form-field>
+        </form>
+    
+    
+        <button mat-raised-button (click)= "updateUsuario()">
+            Salvar
+        </button>
+
+        <button mat-raised-button (click)= "cancel()" >
+            Cancelar
+        </button>
+    </mat-card>
+</div>
+
