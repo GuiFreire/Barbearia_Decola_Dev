@@ -12,11 +12,12 @@ import { PerfilService } from 'src/app/services/perfil.service';
 // constructor() { }
 
 export class PerfilEditarComponent implements OnInit {
-  service: Perfil = {
+  perfil: Perfil = {
     nome: '',
     cpf: '',
     email: '',
     telefone: '',
+    senha: '',
     url: '',
 
   };

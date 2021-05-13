@@ -35,6 +35,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 registerLocaleData(localePt);
+import { CadastroComponent } from './components/template/cadastro/cadastro.component';
+import { LoginComponent } from './components/template/login/login.component';
+import { ContatoComponent } from './components/template/contato/contato.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ registerLocaleData(localePt);
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
     UsuarioReadComponent,
-    UsuarioDeleteComponent
+    UsuarioDeleteComponent,
+    CadastroComponent,
+    LoginComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,6 @@ registerLocaleData(localePt);
     MatButtonModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
@@ -77,4 +82,5 @@ registerLocaleData(localePt);
   }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
