@@ -45,29 +45,25 @@
 
 <div class="tela">
     <mat-card>
-        <mat-card-title>Alterar Agendamento</mat-card-title>
+        <mat-card-title>Novo Produto</mat-card-title>
         <form>
             <mat-form-field>
-                <input matInput placeholder = "Cliente"
-                 name="cliente">
-            </mat-form-field>
-            
-            <mat-form-field>
-                <input matInput placeholder = "Funcionário"
-                name="funcionario">
+                <input matInput placeholder = "Nome"
+                [(ngModel)]="produto.nome" name="nome">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder = "Serviço"
-                name="servico">
+                <input matInput placeholder = "Descrição"
+                [(ngModel)]="produto.descricao" name="descricao">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder = "Data"
-                name="data">
+                <input matInput placeholder = "URL"
+                [(ngModel)]="produto.url" name="url">
             </mat-form-field>
+           
         </form>
-
-        <button mat-raised-button (click)= "updateAgendamento()">
-            Atualizar
+     
+        <button mat-raised-button (click)= "createProduto()">
+            Salvar
         </button>
 
         <button mat-raised-button (click)= "cancel()" >
@@ -75,3 +71,4 @@
         </button>
     </mat-card>
 </div>
+

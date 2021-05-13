@@ -27,6 +27,7 @@ export class HomeFuncionarioCreateComponent implements OnInit {
   createAgendamento(): void {
     this.agendamentoService.create(this.agendamento).subscribe(() => {
       this.agendamentoService.showMessage('Agendamento criado!')
+
       this.router.navigate(['/home-funcionario'])
     })
 

@@ -10,12 +10,16 @@ import { Usuario } from './../../../models/usuario.model';
 })
 export class UsuarioReadComponent implements OnInit {
 
-  usuario: Usuario[]
+  usuarios: Usuario[]
   displayedColumns = ['id', 'nome', 'cpf', 'email', 'telefone', 'tipo', 'url']
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
+    this.usuarioService.read().subscribe(usuarios => {
+      this.usuarios = usuarios
+      console.log(usuarios)
+    })
   }
 
   navigateToUsuarioCreate(): void {

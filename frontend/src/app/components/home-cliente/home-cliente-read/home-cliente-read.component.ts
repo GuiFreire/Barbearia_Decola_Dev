@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-home-funcionario-read',
-  templateUrl: './home-funcionario-read.component.html',
-  styleUrls: ['./home-funcionario-read.component.css']
+  selector: 'app-home-cliente-read',
+  templateUrl: './home-cliente-read.component.html',
+  styleUrls: ['./home-cliente-read.component.css']
 })
-export class HomeFuncionarioReadComponent implements OnInit {
+export class HomeClienteReadComponent implements OnInit {
 
   agendamentos: Agendamento[]
   displayedColumns = ['id', 'data', 'cliente', 'funcionario', 'servico']
@@ -28,3 +28,4 @@ export class HomeFuncionarioReadComponent implements OnInit {
   }
 
 }
+

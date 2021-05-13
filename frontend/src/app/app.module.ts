@@ -32,12 +32,16 @@ import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usua
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
-
-registerLocaleData(localePt);
 import { CadastroComponent } from './components/template/cadastro/cadastro.component';
 import { LoginComponent } from './components/template/login/login.component';
 import { ContatoComponent } from './components/template/contato/contato.component';
+import { HomeClienteReadComponent } from './components/home-cliente/home-cliente-read/home-cliente-read.component';
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
+import { ProdutoUpdateComponent } from './components/produto/produto-update/produto-update.component';
+import { ProdutoDeleteComponent } from './components/produto/produto-delete/produto-delete.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -54,7 +58,12 @@ import { ContatoComponent } from './components/template/contato/contato.componen
     UsuarioDeleteComponent,
     CadastroComponent,
     LoginComponent,
-    ContatoComponent
+    ContatoComponent,
+    HomeClienteReadComponent,
+    ProdutoCreateComponent,
+    ProdutoReadComponent,
+    ProdutoUpdateComponent,
+    ProdutoDeleteComponent
   ],
   imports: [
     BrowserModule,

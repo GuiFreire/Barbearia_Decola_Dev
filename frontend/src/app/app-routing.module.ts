@@ -13,6 +13,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './components/template/cadastro/cadastro.component';
 import { LoginComponent } from './components/template/login/login.component';
 import { ContatoComponent } from './components/template/contato/contato.component';
+import { ProdutoDeleteComponent } from './components/produto/produto-delete/produto-delete.component';
+import { ProdutoUpdateComponent } from './components/produto/produto-update/produto-update.component';
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
+import { HomeClienteReadComponent } from './components/home-cliente/home-cliente-read/home-cliente-read.component';
 
 
 const routes: Routes = [
@@ -52,6 +57,22 @@ const routes: Routes = [
     component: UsuarioDeleteComponent
   },
   {
+    path: 'produto/read',
+    component: ProdutoReadComponent
+  },
+  {
+    path: "produto/create",
+    component: ProdutoCreateComponent
+  },
+  {
+    path: "produto/update/:id",
+    component: ProdutoUpdateComponent
+  },
+  {
+    path: "produto/delete/:id",
+    component: ProdutoDeleteComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -66,7 +87,11 @@ const routes: Routes = [
   {
     path: 'perfil',
     component: PerfilEditarComponent
-  }
+  },
+  {
+    path: 'home-cliente',
+    component: HomeClienteReadComponent
+  },
 ];
 
 @NgModule({
