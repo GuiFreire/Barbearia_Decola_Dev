@@ -12,7 +12,7 @@ export class ProdutoReadComponent implements OnInit {
 
   produtos: Produto[] = [];
 
-  displayedColumns = ['id', 'nome', 'descricao', 'url', 'action'];
+  displayedColumns = ['id', 'nome', 'descricao', 'action'];
 
   constructor(private produtoService: ProdutoService, private router: Router) { }
 
