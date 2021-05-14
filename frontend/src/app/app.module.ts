@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -40,6 +41,7 @@ import { ProdutoCreateComponent } from './components/produto/produto-create/prod
 import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
 import { ProdutoUpdateComponent } from './components/produto/produto-update/produto-update.component';
 import { ProdutoDeleteComponent } from './components/produto/produto-delete/produto-delete.component';
+import { ServicoReadComponent } from './components/servico/servico-read/servico-read.component';
 
 registerLocaleData(localePt);
 
@@ -63,7 +65,8 @@ registerLocaleData(localePt);
     ProdutoCreateComponent,
     ProdutoReadComponent,
     ProdutoUpdateComponent,
-    ProdutoDeleteComponent
+    ProdutoDeleteComponent,
+    ServicoReadComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ registerLocaleData(localePt);
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatIconModule
 
   ],
   providers: [{

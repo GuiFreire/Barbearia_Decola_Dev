@@ -18,26 +18,27 @@ import { ProdutoUpdateComponent } from './components/produto/produto-update/prod
 import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
 import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
 import { HomeClienteReadComponent } from './components/home-cliente/home-cliente-read/home-cliente-read.component';
+import { ServicoReadComponent } from './components/servico/servico-read/servico-read.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'perfis', pathMatch: 'full' },
   { path: 'editar', component: PerfilEditarComponent },
-  // { path: 'perfis/:id', component: PerfilEditarComponent }
+
   {
     path: 'home-funcionario',
     component: HomeFuncionarioReadComponent
   },
   {
-    path: "agendamento/create",
+    path: "agendamento/create/:id",
     component: HomeFuncionarioCreateComponent
   },
   {
-    path: "agendamento/update",
+    path: "agendamento/update/:id",
     component: AgendamentoUpdateComponent
   },
   {
-    path: "agendamento/delete",
+    path: "agendamento/delete/:id",
     component: AgendamentoDeleteComponent
   },
   {
@@ -45,15 +46,15 @@ const routes: Routes = [
     component: UsuarioReadComponent
   },
   {
-    path: "usuario/create",
+    path: 'usuario/create',
     component: UsuarioCreateComponent
   },
   {
-    path: "usuario/update",
+    path: 'usuario/update/:id',
     component: UsuarioUpdateComponent
   },
   {
-    path: "usuario/delete",
+    path: 'usuario/delete/:id',
     component: UsuarioDeleteComponent
   },
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
     path: "produto/delete/:id",
     component: ProdutoDeleteComponent
   },
+  {
+    path: 'servico/read',
+    component: ServicoReadComponent
+  },
+
   {
     path: 'login',
     component: LoginComponent

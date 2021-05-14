@@ -23,13 +23,14 @@ export class UsuarioDeleteComponent implements OnInit {
   }
 
   deleteUsuario(): void {
-
+    this.usuarioService.delete(this.usuario.id).subscribe(() => {
+      this.usuarioService.showMessage("Usuário excluído com sucesso!");
+      this.router.navigate(['/usuario/read']);
+    });
   }
-
 
   cancel(): void {
     this.router.navigate(['/usuario/read'])
   }
-
 
 }

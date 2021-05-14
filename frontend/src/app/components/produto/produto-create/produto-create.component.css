@@ -15,13 +15,82 @@ button {
     margin: 20px 15px 0px 0px
 }
 
+mat-nav-list {
+    margin-top: 100px;
+    background-color: rgb(51, 50, 50);
+    height: min-content;
+}
+
+.sidenav {
+    width: 200px;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.sidenav a {
+    color: orange;
+    background-color: rgb(51, 50, 50);
+    font-size: 20px;
+    font-weight: 600550;
+    padding: 10px;
+}
+
+.sidenav {
+    background-color: rgb(51, 50, 50);
+
+
+}
+
+.sidenav a:hover {
+    color: white
+}
+
+.btn-create {
+    background-color: rgb(51, 50, 50);
+
+}
+
+.mat-toolbar {
+    background-color: rgb(51, 50, 50);
+
+}
+
+.btn-create {
+    padding-bottom: 10px;
+}
+
+button {
+    padding: 8px 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f4f4f4;
+    color: orange;
+    transition: all 0.5s;
+    box-shadow: 0px 5px 6px rgb(0 0 0 / 30%);
+    margin-left: 200px;
+}
+
+mat-nav-list {
+    margin-top: 100px;
+}
+
+.nav-list {
+    color: #D48337;
+}
+
+mat-card {
+    margin-left: 65px;
+}
 
 button {
     padding: 8px 30px;
     border-radius: 5px;
     border: none;
     background-color: black;
-    color: white;
+    color: orange;
     transition: all 0.5s;
     box-shadow: 0px 5px 6px rgb(0 0 0 / 30%);
     margin-left: 200px;
@@ -42,4 +111,9 @@ th {
 
 .tela {
     margin-left: 140px;
+}
+
+.logo {
+    max-width: 80px;
+    height: 80px;
 }

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class HomeClienteReadComponent implements OnInit {
 
   agendamentos: Agendamento[]
-  displayedColumns = ['id', 'data', 'cliente', 'funcionario', 'servico']
+  displayedColumns = ['cliente', 'funcionario', 'servico', 'data', 'hora']
 
   constructor(private agendamentoService: AgendamentoService, private router: Router) { }
 

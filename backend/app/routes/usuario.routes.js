@@ -8,6 +8,12 @@ const usuarioRouter = Router();
 // atualizar usuario
 usuarioRouter.put("/:id",usuario.update);
 
+//Listar todos os usuários
+usuarioRouter.get('/', usuario.findAll);
+
+//Buscar usuário por ID
+usuarioRouter.get("/:id", usuario.findUsuarioById);
+
 //Listar Clientes
 usuarioRouter.get("/clientes", usuario.findClientes);
 

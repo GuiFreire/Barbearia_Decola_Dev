@@ -39,7 +39,7 @@ export class UsuarioService {
     return this.http.put<Usuario>(url, usuario)
   }
 
-  delete(id: string): Observable<Usuario> {
+  delete(id: number): Observable<Usuario> {
     const url = `${this.baseUrl}/${id}`
     return this.http.delete<Usuario>(url);
   }

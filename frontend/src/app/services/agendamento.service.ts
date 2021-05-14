@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AgendamentoService {
-  baseUrl = ""
+  baseUrl = "http://localhost:8080/api/agendamento"
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 

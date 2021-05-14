@@ -19,6 +19,7 @@ export class UsuarioUpdateComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')
     this.usuarioService.readById(id).subscribe(usuario => {
       this.usuario = usuario;
+      console.log(usuario)
     });
   }
 
