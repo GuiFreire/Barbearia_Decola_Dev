@@ -1,12 +1,12 @@
 <header>
   <div class="topo">
     <div>
-      <img src="assets/img/corner-down-left.png" class="img-down" alt="CORNER DOWN">
+      <a routerLink='/home-funcionario'><img src="assets/img/corner-down-left.png" class="img-down" alt="CORNER DOWN"></a>
       <a>Voltar</a>
     </div>
     <h2>Seu Perfil</h2>
     <div>
-      <img src="assets/img/log-out.png" class="img-logout" alt="LOG OUT">
+      <a routerLink='/login'><img src="assets/img/log-out.png" class="img-logout" alt="LOG OUT"></a>
     </div>
   </div>  
 </header>
@@ -16,7 +16,7 @@
           <img src="assets/img/ed.jpg" class="img-destaque" alt="IMAGEM MAIN">
     </div>
 <div class="submit-form">
-<div *ngIf="!submitted">     
+<div>     
   
    <div class="form-group">
     <label for="nome">Nome</label>
