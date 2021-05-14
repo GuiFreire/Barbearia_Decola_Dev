@@ -11,89 +11,85 @@
   </div>  
 </header>
 <main>
-  <div>
-    <div class="container">
-        
-          <div class="avatar">                   
-                <img src="assets/img/ed.jpg" class="img-destaque" alt="IMAGEM MAIN">
-          </div>
-    <div class="submit-form">
-      <div>
-       
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nome"
-            required
-            [(ngModel)]="currentPerfil.nome"
-            name="nome"
-          />
-        </div>
+  <div class="container">        
+    <div class="avatar">                   
+          <img src="assets/img/ed.jpg" class="img-destaque" alt="IMAGEM MAIN">
+    </div>
+<div class="submit-form">
+<div>     
   
-        <div class="form-group">
-          <label for="cpf">CPF</label>
-          <input
-            class="form-control"
-            id="cpf"
-            required
-            [(ngModel)]="currentPerfil.cpf"
-            name="cpf"
-          />
-        </div>
-
-        <div class="form-group">
-            <label for="telefone">Telefone</label>
-            <input
-              class="form-control"
-              id="telefone"
-              required
-              [(ngModel)]="currentPerfil.telefone"
-              name="telefone"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              class="form-control"
-              id="email"
-              required
-              [(ngModel)]="currentPerfil.email"
-              name="email"
-            />
-          </div>
-          <div class="form-group">
-            <label for="senha">Senha</label>
-            <input
-              class="form-control"
-              id="senha"
-              required
-              [(ngModel)]="currentPerfil.senha"
-              name="senha"
-            />
-          </div>
-          <div class="form-group">
-            <label for="url">Nova URL</label>
-            <input
-              class="form-control"
-              id="url"
-              required
-              [(ngModel)]="currentPerfil.url"
-              name="url"
-            />
-          </div>
-          <div class="editar">
-            <button class="button-editar" (click)="updatePerfil()">editar</button>
-          </div>
-        
-    </div>
-
-    <div class="footer">
-      <p>Barbanade @ todos os direitos reservados<p>
-    </div>
+   <div class="form-group">
+    <label for="nome">Nome</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nome"
+      required
+      [(ngModel)]="perfil.nome"
+      name="nome"
+    />
   </div>
+
+  <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input
+      class="form-control"
+      id="cpf"
+      required
+      [(ngModel)]="perfil.cpf"
+      name="cpf"
+    />
+  </div>
+
+  <div class="form-group">
+      <label for="telefone">Telefone</label>
+      <input
+        class="form-control"
+        id="telefone"
+        required
+        [(ngModel)]="perfil.telefone"
+        name="telefone"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        class="form-control"
+        id="email"
+        required
+        [(ngModel)]="perfil.email"
+        name="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input
+        class="form-control"
+        id="senha"
+        required
+        [(ngModel)]="perfil.senha"
+        name="senha"
+      />
+    </div>
+    <div class="form-group">
+      <label for="url">Nova URL</label>
+      <input
+        class="form-control"
+        id="url"
+        required
+        [(ngModel)]="perfil.url"
+        name="url"
+      />
+    </div>
+    <div class="editar">
+      <button  class="button-editar">editar</button>
+    </div>
+    
+</div>
 </div>
 </div>
 </main>
+<footer>
+  <p>Barbanade@ todos os direitos reservados<p>
+</footer>

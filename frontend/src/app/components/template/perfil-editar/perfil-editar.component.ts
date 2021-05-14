@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class PerfilEditarComponent implements OnInit {
-  currentPerfil: PerfilEditar = {
+  perfil: PerfilEditar = {
     nome: '',
     cpf: '',
     email: '',
@@ -33,7 +33,7 @@ export class PerfilEditarComponent implements OnInit {
     this.perfilEditarService.get(id)
       .subscribe(
         data => {
-          this.currentPerfil = data;
+          this.perfil = data;
         },
         error => {
           console.log(error);
@@ -42,7 +42,7 @@ export class PerfilEditarComponent implements OnInit {
   }
 
   updatePerfil(): void {
-    this.perfilEditarService.update(this.currentPerfil.id, this.currentPerfil)
+    this.perfilEditarService.update(this.perfil.id, this.perfil)
       .subscribe(
         response => {
           console.log(response);

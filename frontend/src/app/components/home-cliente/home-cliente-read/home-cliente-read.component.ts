@@ -10,9 +10,12 @@ import { Router } from '@angular/router';
 })
 
 export class HomeClienteReadComponent implements OnInit {
-  displayedColumns = ['id', 'data', 'cliente', 'funcionario', 'servico'];
 
   agendamentos: Agendamento[] = [];
+  displayedColumns = ['cliente', 'funcionario', 'servico', 'data', 'hora']
+
+
+  
   
   constructor(private agendamentoService: AgendamentoService, private router: Router) {}
 

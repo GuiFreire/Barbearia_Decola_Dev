@@ -77,6 +77,35 @@ const update = async (req, res) => {
     };
 };
 
+const findAll = async (req, res) => {
+    try {
+        const usuarios = await usuarioRepository.findAll();
+
+        res.send(usuarios);
+    }catch (error){
+        res.status(500).send(error);
+    };
+};
+
+const findUsuarioById = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const usuario = await usuarioRepository.findUsuarioById(id)
+
+        if(!usuario) {
+            res.status(400).send({
+                mensage: "Cliente nao encontrado"
+            });
+
+            return;
+        }
+
+        res.send(usuario)
+    }catch (error){
+        res.status(500).send(error);
+    }
+}
+
 const findClienteByNomeAndTipo = async(req,res) =>{
     const nome =  req.params.nome;
     
@@ -315,7 +344,9 @@ const deleteUsuario = async (req, res) => {
 };
 
 module.exports = {
+    findAll,
     findClientes,
+    findUsuarioById,
     findFuncionarios,
     findFuncByPhone,
     deleteUsuario,

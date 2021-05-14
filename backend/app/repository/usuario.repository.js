@@ -17,6 +17,12 @@ const updateUser = async (usuario, id) => {
     return data
 };
 
+const findAll = async () => {
+    const data = await Usuario.findAll();
+
+    return data
+}
+
 const findClientes = async () => {
     const data = await Usuario.findAll({
         where: {tipo: 1}
@@ -170,6 +176,7 @@ const findUsuarioByEmail = async (email) => {
 
 module.exports = {
     create,
+    findAll,
     findClientes,
     findFuncionarios,
     findUserByIdAndType,

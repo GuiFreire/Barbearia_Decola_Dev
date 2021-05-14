@@ -12,7 +12,7 @@ export class UsuarioReadComponent implements OnInit {
 
   usuarios: Usuario[] = [];
   
-  displayedColumns = ['id', 'nome', 'cpf', 'email', 'telefone', 'tipo', 'url']
+  displayedColumns = ['nome', 'cpf', 'email', 'telefone', 'action']
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 

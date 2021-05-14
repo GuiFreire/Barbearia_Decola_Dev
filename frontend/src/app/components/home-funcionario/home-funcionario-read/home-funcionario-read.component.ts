@@ -13,19 +13,28 @@ import { Router } from '@angular/router';
 export class HomeFuncionarioReadComponent implements OnInit {
 
   agendamentos: Agendamento[] = [];
-  
-  displayedColumns = ['id', 'data', 'cliente', 'funcionario', 'servico']
+
+  displayedColumns = ['cliente', 'funcionario', 'servico', 'data', 'hora']
 
   constructor(private agendamentoService: AgendamentoService, private router: Router) { }
 
   ngOnInit(): void {
     this.agendamentoService.read().subscribe(agendamento => {
       this.agendamentos = agendamento
+
     })
   }
 
   navigateToAgendamentoCreate(): void {
     this.router.navigate(['/agendamento/create'])
+  }
+
+  navigateToAgendamentoUpdate(): void {
+    this.router.navigate(['/agendamento/update'])
+  }
+
+  navigateToAgendamentoDelete(): void {
+    this.router.navigate(['/agendamento/delete'])
   }
 
 }

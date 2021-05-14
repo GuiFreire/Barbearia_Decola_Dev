@@ -35,13 +35,17 @@ export class UsuarioDeleteComponent implements OnInit {
   }
 
   deleteUsuario(): void {
-
+    if(this.usuario.id){
+      this.usuarioService.delete(this.usuario.id).subscribe(() => {
+        this.usuarioService.showMessage("Usuário excluído com sucesso!");
+        this.router.navigate(['/usuario/read']);
+      });
+    }
+    
   }
-
 
   cancel(): void {
     this.router.navigate(['/usuario/read'])
   }
-
 
 }

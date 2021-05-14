@@ -26,4 +26,12 @@ export class ProdutoReadComponent implements OnInit {
   navigateToProdutoCreate(): void {
     this.router.navigate(['produto/create'])
   }
+
+  navigateToProdutoUpdate(): void {
+    this.router.navigate(['produto/update'])
+  }
+
+  navigateToProdutoDelete(): void {
+    this.router.navigate(['produto/delete'])
+  }
 }
